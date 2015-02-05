@@ -5,13 +5,13 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+  </head>
+  <body>
+    <?php
+      echo 'product';
+    ?>
+  </body>
 </html>

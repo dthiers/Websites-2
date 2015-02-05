@@ -8,10 +8,11 @@ and open the template in the editor.
   <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="../CSS/style.css">
   </head>
   <body>
     <?php
-      include('header/header1234.php');
+      include('../header/header.php');
     ?>
   </body>
 </html>

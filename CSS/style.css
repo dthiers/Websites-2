@@ -1,0 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5-feb-2015, 21:19:35
+    Author     : Raymond Phua
+*/
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.navbar {
+    margin-left: 550px;
+    width: 800px;
+    height: 35px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #8AD9FF;
+}
+
+.navbar ul {
+    height: auto;
+    padding-top: 3px;
+    padding-left: 0px;
+}
+
+.navbar li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #00F;
+    margin: 60px;
+}
+
+.navbar a:hover {
+    background-color: #FF9898;
+    color: white;
+}

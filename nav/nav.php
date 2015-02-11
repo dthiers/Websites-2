@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar" id="transition-code">
   <ul>
     <li><a href="../home/home.php">Home</a></li>
     <li><a href="../product/product.php">Product</a></li>

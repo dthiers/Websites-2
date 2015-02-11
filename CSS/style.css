@@ -12,9 +12,49 @@ html, body {
     margin: 0;
 }
 
+#header {
+  width: 100%;
+  height: auto;
+}
+
+#headerLogo {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: inherit;
+  background: white;
+}
+
+#headerLogo img {
+  width: 100px;
+  height: 100px;
+}
+
+#headerImage {
+    position: relative;
+    background: white;
+    height: 500px;
+    width: 100%;
+    overflow: hidden;
+    
+}
+
+#headerImage img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 0;
+  
+  transform: translateX(-50%);
+  
+  width: auto;
+  height: 100%;
+}
+
 .navbar {
-    margin-left: 550px;
-    width: 800px;
+    margin-top: 0px;
+    width: 100%;
     height: 35px;
     font-size: 16px;
     font-weight: bold;
@@ -24,8 +64,8 @@ html, body {
 
 .navbar ul {
     height: auto;
-    padding-top: 3px;
-    padding-left: 0px;
+    
+    margin-top: 0;
 }
 
 .navbar li {
@@ -36,10 +76,14 @@ html, body {
 .navbar a {
     text-decoration: none;
     color: #00F;
-    margin: 60px;
 }
 
 .navbar a:hover {
     background-color: #FF9898;
     color: white;
+}
+
+.content {
+  
+  
 }

@@ -1,5 +1,12 @@
-<a href="../home/home.php"><img src='../header/logo.jpg' alt='Logo' width="200" height="100"></a>
-<br/>
+<div id="header">
+  <div id="headerLogo">
+    <img src="../header/images/logo.jpg" alt="Logo">
+  </div>
+  <div id="headerImage">
+    <img src="../header/images/header.png" alt="Header">
+  </div>
+  
+</div>
 
 <?php
     include('../nav/nav.php');

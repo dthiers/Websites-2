@@ -57,6 +57,19 @@ html, body {
   height: 100%;
 }
 
+#footer {
+    background-color: #6f6f6f;
+    margin-top: 60px;
+    width: 100%;
+    height: 100px;
+}
+
+#invisible-beam {
+    width:100%;
+    background-color: white;
+    clear: both;
+}
+
 .navbar {
     margin-top: 0px;
     width: 100%;
@@ -67,7 +80,6 @@ html, body {
 
 .navbar ul {
     height: auto;
-    
     margin-top: 0;
 }
 
@@ -111,3 +123,41 @@ hr:after {
   background-image: -o-radial-gradient(center top, farthest-side, #cccccc 0%, rgba(255, 255, 255, 0) 50%);
   //background-image: radial-gradient(farthest-side at center top, #cccccc 0%, rgba(255, 255, 255, 0) 100%);
 }
+
+
+.article-container {
+    margin: 50px auto;
+    width: 66%;
+    height: auto;
+}
+
+.article-content {
+    float: left;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding-left: 30px;
+    width: 28%;
+    height: 46%;
+    background-color: #f5f5f5;
+    border: 1px solid #dcdcdc;
+    background-image: url('../images/MACBOOKPRO.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.article-button {
+    margin-left: -31.7px;
+    margin-top: 65%;
+    width: 109.4%;
+    height: 50px;
+    border: 1px solid #ededed;
+    background-color: #fff;
+    color: #58c8c9;
+}
+
+.article-button:hover {
+    background-color: #F8F8F8;
+    cursor: pointer;
+}
+

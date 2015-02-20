@@ -14,5 +14,49 @@ and open the template in the editor.
     <?php
       include('../header/header.php');
     ?>
+      
+      <div class="article-container">
+          <h1>Articles</h1>
+          <div class="article-content">
+              <h1>Macbook Pro</h1>
+              <button class="article-button">Bekijk</button>
+          </div>
+          <div class="article-content">
+              <h1>Macbook Pro</h1>
+              <button class="article-button">Bekijk</button>
+          </div>
+          <div class="article-content">
+              <h1>Macbook Pro</h1>
+              <button class="article-button">Bekijk</button>
+          </div>
+          <div class="article-content">
+              <h1>Macbook Pro</h1>
+              <button class="article-button">Bekijk</button>
+          </div>
+          <div class="article-content">
+              <h1>Macbook Pro</h1>
+              <button class="article-button">Bekijk</button>
+          </div>
+          <div class="article-content">
+              <h1>Macbook Pro</h1>
+              <button class="article-button">Bekijk</button>
+          </div>
+          <div class="article-content">
+              <h1>Macbook Pro</h1>
+              <button class="article-button">Bekijk</button>
+          </div>
+          <div class="article-content">
+              <h1>Macbook Pro</h1>
+              <button class="article-button">Bekijk</button>
+          </div>
+          <div class="article-content">
+              <h1>Macbook Pro</h1>
+              <button class="article-button">Bekijk</button>
+          </div>
+      </div>
+      
+    <?php
+      include('../footer/footer.php');
+    ?>
   </body>
 </html>

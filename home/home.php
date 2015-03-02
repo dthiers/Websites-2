@@ -6,9 +6,10 @@ and open the template in the editor.
 -->
 <html>
   <head>
+    <script src="../js/functions.js"></script>
     <meta charset="UTF-8">
     <title>Homes</title>
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
     <?php

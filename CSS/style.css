@@ -3,7 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : 5-feb-2015, 21:19:35
     Author     : Raymond Phua
 */
@@ -41,7 +41,7 @@ html, body {
     //width: 100%;
     height: 500px;
     overflow: hidden;
-    
+
 }
 
 #headerImage img {
@@ -50,24 +50,11 @@ html, body {
   bottom: 0;
   left: 50%;
   right: 0;
-  
+
   transform: translateX(-50%);
-  
+
   width: auto;
   height: 100%;
-}
-
-#footer {
-    background-color: #6f6f6f;
-    margin-top: 60px;
-    width: 100%;
-    height: 100px;
-}
-
-#invisible-beam {
-    width:100%;
-    background-color: white;
-    clear: both;
 }
 
 .navbar {
@@ -80,6 +67,7 @@ html, body {
 
 .navbar ul {
     height: auto;
+
     margin-top: 0;
 }
 
@@ -98,38 +86,10 @@ html, body {
 }
 
 .content {
-  
-  
+
+
 }
 
-
-
-hr {
-  height: 0.1px;
-  background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0,0,0,0)), color-stop(0.5, #333333), to(rgba(0,0,0,0)));
-  background: -webkit-linear-gradient(left, rgba(0,0,0,0), #333333, rgba(0,0,0,0));
-  background: -moz-linear-gradient(left, rgba(0,0,0,0), #333333, rgba(0,0,0,0));
-  background: -o-linear-gradient(left, rgba(0,0,0,0), #333333, rgba(0,0,0,0));
-  background: linear-gradient(left, rgba(0,0,0,0), #333333, rgba(0,0,0,0));
-  border: 0;
-}
-hr:after { 
-  display: block; 
-  content:'';
-  height: 14px;
-  background-image: -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 5, color-stop(0%, #cccccc), color-stop(50%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-radial-gradient(center top, farthest-side, #cccccc 0%, rgba(255, 255, 255, 0) 50%);
-  background-image: -moz-radial-gradient(center top, farthest-side, #cccccc 0%, rgba(255, 255, 255, 0) 50%);
-  background-image: -o-radial-gradient(center top, farthest-side, #cccccc 0%, rgba(255, 255, 255, 0) 50%);
-  //background-image: radial-gradient(farthest-side at center top, #cccccc 0%, rgba(255, 255, 255, 0) 100%);
-}
-
-
-.article-container {
-    margin: 50px auto;
-    width: 66%;
-    height: auto;
-}
 
 .article-content {
     float: left;
@@ -161,3 +121,36 @@ hr:after {
     cursor: pointer;
 }
 
+
+hr {
+  height: 0.1px;
+  background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0,0,0,0)), color-stop(0.5, #333333), to(rgba(0,0,0,0)));
+  background: -webkit-linear-gradient(left, rgba(0,0,0,0), #333333, rgba(0,0,0,0));
+  background: -moz-linear-gradient(left, rgba(0,0,0,0), #333333, rgba(0,0,0,0));
+  background: -o-linear-gradient(left, rgba(0,0,0,0), #333333, rgba(0,0,0,0));
+  background: linear-gradient(left, rgba(0,0,0,0), #333333, rgba(0,0,0,0));
+  border: 0;
+}
+hr:after {
+  display: block;
+  content:'';
+  height: 14px;
+  background-image: -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 5, color-stop(0%, #cccccc), color-stop(50%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-radial-gradient(center top, farthest-side, #cccccc 0%, rgba(255, 255, 255, 0) 50%);
+  background-image: -moz-radial-gradient(center top, farthest-side, #cccccc 0%, rgba(255, 255, 255, 0) 50%);
+  background-image: -o-radial-gradient(center top, farthest-side, #cccccc 0%, rgba(255, 255, 255, 0) 50%);
+  //background-image: radial-gradient(farthest-side at center top, #cccccc 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+#footer {
+    background-color: #6f6f6f;
+    margin-top: 60px;
+    width: 100%;
+    height: 100px;
+}
+
+#invisible-beam {
+    width:100%;
+    background-color: white;
+    clear: both;
+}

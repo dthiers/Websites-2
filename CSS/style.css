@@ -90,6 +90,11 @@ html, body {
 
 }
 
+.article-container {
+    margin: 50px auto;
+    width: 66%;
+    height: auto;
+}
 
 .article-content {
     float: left;
@@ -153,4 +158,12 @@ hr:after {
     width:100%;
     background-color: white;
     clear: both;
+}
+
+.about-container {
+    width: 50%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+
 }

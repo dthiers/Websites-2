@@ -21,6 +21,6 @@ class Category {
 
     //Setters
     public function setName($name) {
-        this->$name = $name;
+        $this->name = $name;
     }
 }

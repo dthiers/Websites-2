@@ -6,11 +6,10 @@
  * Time: 20:03
  */
 
-include_once ('../config/config.php');
+require_once ('../config/config.php');
 
 class Database {
     private $db;
-    private $result;
     static $instance;
 
     //private constructor, using the singleton design pattern
@@ -23,9 +22,35 @@ class Database {
         }
     }
 
-    //misschien toch prepared statements maken
-    public function doSQL($sql) {
-        $this->result = $this->db->query($sql);
+    // ---------------------- PRODUCT FUNCTIONS --------------------
+
+    // products from categoryId
+    public function selectProductsCategory($categoryId) {
+        //prepared statements + security
+
+        //query
+        $query = "SELECT * FROM Product WHERE Categories_CategoryId = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $categoryId);
+
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($productId, $sku, $name, $price, $stock);
+
+        while ($stmt->fetch()) {
+            $result[] = [
+                "ProductId" => $productId,
+                "SKU"       => $sku,
+                "Name"      => $name,
+                "Price"     => $price,
+                "Stock"     => $stock
+            ];
+        }
+
+        $stmt->close();
+
+        return $result;
     }
 
     public function getResult() {

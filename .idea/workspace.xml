@@ -57,8 +57,8 @@
       <file leaf-file-name="home.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/home/home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.93971634" vertical-offset="276" max-vertical-offset="1309">
-              <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.75886524" vertical-offset="378" max-vertical-offset="1309">
+              <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -73,8 +73,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Classes/Product.class.php" />
-        <option value="$PROJECT_DIR$/home/home.php" />
         <option value="$PROJECT_DIR$/Classes/Database.class.php" />
+        <option value="$PROJECT_DIR$/home/home.php" />
       </list>
     </option>
   </component>
@@ -255,8 +255,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/home/home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.93971634" vertical-offset="276" max-vertical-offset="1309">
-          <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.75886524" vertical-offset="378" max-vertical-offset="1309">
+          <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
           <folding />
         </state>
       </provider>

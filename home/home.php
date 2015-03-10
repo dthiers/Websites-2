@@ -55,6 +55,14 @@ and open the template in the editor.
               <button class="article-button">Bekijk</button>
           </div>
       </div>
+
+    <?php
+        include('(../Classes/Database.class.php');
+        //test
+        $databaas = Database::getDatabase();
+
+        $databaas->selectProductsCategory()
+    ?>
       
     <?php
       include('../footer/footer.php');

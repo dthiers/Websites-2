@@ -5,6 +5,13 @@
         </h1>
         <nav>
 
+            <?php
+                for ($i = 0; $i < 5; $i++){
+            ?>
+                    <a href="#">Test <?php echo $i+1?> </a>
+            <?php
+                }
+            ?>
         </nav>
     </div>
 </header><!-- /header -->

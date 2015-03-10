@@ -46,7 +46,7 @@
                 for($i = 0; $i < 7; $i++){?>
                     <div class="item">
                         <div class="image">
-                            <img src=<?php echo"img/".(rand(1,4)).".jpg";?> >
+                            <img src=<?php echo"img/".(rand(1,5)).".jpg";?> >
                         </div>
                         <div class="title">
                             Dit is een test titel nummer <?php echo $i+1 ?>

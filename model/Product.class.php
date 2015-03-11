@@ -12,6 +12,7 @@ class Product {
     private $id;
     private $SKU;
     private $name;
+    private $description;
     private $price;
     private $stock;
 
@@ -26,6 +27,10 @@ class Product {
 
     public function getName(){
         return $this->name;
+    }
+
+    public function getDescription() {
+        return $this->description;
     }
 
     public function getPrice() {
@@ -50,6 +55,10 @@ class Product {
         $this->name = $name;
     }
 
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
     public function setPrice($price) {
         $this->price = $price;
     }
@@ -58,10 +67,11 @@ class Product {
         $this->stock = $stock;
     }
 
-    public function __construct($id, $SKU, $name, $price, $stock) {
+    public function __construct($id, $SKU, $name, $description, $price, $stock) {
         $this->setId($id);
         $this->setSKU($SKU);
         $this->setName($name);
+        $this->setDescription($description);
         $this->setPrice($price);
         $this->setStock($stock);
     }
@@ -91,11 +101,12 @@ class Product {
         $id = $result['ProductId'];
         $sku = $result['SKU'];
         $name = $result['Name'];
+        $description = $result['Description'];
         $price = $result['Price'];
         $stock = $result['Stock'];
 
         //set product
-        $product = new Product($id, $sku, $name, $price, $stock);
+        $product = new Product($id, $sku, $name, $description, $price, $stock);
 
         return $product;
     }
@@ -125,10 +136,11 @@ class Product {
             $productId = $item['ProductId'];
             $sku = $item['SKU'];
             $name = $item['Name'];
+            $description = $item['Description'];
             $price = $item['Price'];
             $stock = $item['Stock'];
 
-            $product = new Product($productId, $sku, $name, $price, $stock);
+            $product = new Product($productId, $sku, $name, $description, $price, $stock);
 
             //add products to the array
             $products[] = $product;

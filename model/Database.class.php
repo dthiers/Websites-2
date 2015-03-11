@@ -6,7 +6,7 @@
  * Time: 20:03
  */
 
-require_once ('../config/config.php');
+require_once ('../config/config.inc.php');
 
 class Database {
     private $db;
@@ -63,13 +63,14 @@ class Database {
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($productId, $sku, $name, $price, $stock);
+        $stmt->bind_result($productId, $sku, $name, $description, $price, $stock);
 
         while ($stmt->fetch()) {
             $result[] = [
                 "ProductId" => $productId,
                 "SKU" => $sku,
                 "Name" => $name,
+                "Description" => $description,
                 "Price" => $price,
                 "Stock" => $stock
             ];
@@ -83,17 +84,19 @@ class Database {
     // --------------------- CREATE PRODUCT ------------------- //
     public function createProduct($product, $categoryId) {
         //query
-        $query = "INSERT INTO Product (ProductId, SKU, Name, Price, Stock, Categories_CategoryId VALUES ('', ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO product (SKU, Name, Description, Price, Stock, Categories_CategoryId) VALUES (?, ?, ?, ?, ?, ?)";
 
         //local variables
         $SKU = $product->getSKU();
         $name = $product->getName();
+        $description = $product->getDescription();
         $price = $product->getPrice();
         $stock = $product->getStock();
 
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssdii', $SKU, $name, $price, $stock, $categoryId);
-        $stmt->execute();
+        $stmt = $this->db->prepare($query) or die( $this->db->error);
+
+        $stmt->bind_param('sssdii', $SKU, $name, $description, $price, $stock, $categoryId);
+        $stmt->execute() or die ( $this->db->error);
         $stmt->close();
     }
 

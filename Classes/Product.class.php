@@ -38,6 +38,10 @@ class Product {
 
 
     // Setters
+    public function setId($id) {
+        $this->id = $id;
+    }
+
     public function setSKU($SKU) {
         $this->SKU = $SKU;
     }
@@ -54,7 +58,8 @@ class Product {
         $this->stock = $stock;
     }
 
-    public function __construct($SKU, $name, $price, $stock) {
+    public function __construct($id, $SKU, $name, $price, $stock) {
+        $this->setId($id);
         $this->setSKU($SKU);
         $this->setName($name);
         $this->setPrice($price);
@@ -80,22 +85,17 @@ class Product {
         //db connection
         $db = Database::getDatabase();
 
-        //query
-        $query = "SELECT * FROM product WHERE ProductId = $productId";
-
-        $db->doSQL($query);
-
-        //get result
-        $result = $db->getResult();
+        $result = $db->selectProduct($productId);
 
         //local variables
+        $id = $result['ProductId'];
         $sku = $result['SKU'];
         $name = $result['Name'];
         $price = $result['Price'];
         $stock = $result['Stock'];
 
         //set product
-        $product = new Product($sku, $name, $price, $stock);
+        $product = new Product($id, $sku, $name, $price, $stock);
 
         return $product;
     }
@@ -120,14 +120,15 @@ class Product {
         $products = array();
 
         //loop through all the results
-        while ($row = $result) {
+        foreach ($result as $item) {
             // local values
-            $sku = $row['SKU'];
-            $name = $row['Name'];
-            $price = $row['Price'];
-            $stock = $row['Stock'];
+            $productId = $item['ProductId'];
+            $sku = $item['SKU'];
+            $name = $item['Name'];
+            $price = $item['Price'];
+            $stock = $item['Stock'];
 
-            $product = new Product($sku, $name, $price, $stock);
+            $product = new Product($productId, $sku, $name, $price, $stock);
 
             //add products to the array
             $products[] = $product;

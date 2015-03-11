@@ -20,7 +20,7 @@
         function init() {
             window.addEventListener('scroll', function(e){
                 var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-                    shrinkOn = 300,
+                    shrinkOn = 65,
                     header = document.querySelector("header");
                 if (distanceY > shrinkOn) {
                     classie.add(header,"smaller");
@@ -41,9 +41,35 @@
 
     <div id="main">
         <div id="content">
+
+            <!-- HIER KOMT HET CATEGORIE MENU-->
+            <div id="categories">
+                <h1>Categories</h1>
+                <p>
+                <ul>
+                    <?php
+                        for ($u = 0; $u < 10; $u++){?>
+                        <li><a href="#">Category <?php echo $u+1;?></a></li>
+                    <?php
+                        }
+                    ?>
+                    <li>
+                        <ul>
+                            <?php
+                            for ($u = 0; $u < 10; $u++){?>
+                                <li><a href="#">Category <?php echo $u+1;?></a></li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    </li>
+                </ul>
+                </p>
+
+            </div><!-- categories -->
             <div class="container_store2">
             <?php
-                for($i = 0; $i < 7; $i++){?>
+                for($i = 0; $i < 20; $i++){?>
                     <div class="item">
                         <div class="image">
                             <img src=<?php echo"img/".(rand(1,5)).".jpg";?> >
@@ -54,7 +80,7 @@
                         <div class="price">
                             prijs: <?php echo(rand(0.1,1000)); ?>
                         </div>
-                    </div>
+                    </div><!-- .item -->
             <?php
             }
             ?>

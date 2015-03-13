@@ -98,12 +98,12 @@ class Product {
         $result = $db->selectProduct($productId);
 
         //local variables
-        $id = $result['ProductId'];
-        $sku = $result['SKU'];
-        $name = $result['Name'];
-        $description = $result['Description'];
-        $price = $result['Price'];
-        $stock = $result['Stock'];
+        $id = $result[0]['ProductId'];
+        $sku = $result[0]['SKU'];
+        $name = $result[0]['Name'];
+        $description = $result[0]['Description'];
+        $price = $result[0]['Price'];
+        $stock = $result[0]['Stock'];
 
         //set product
         $product = new Product($id, $sku, $name, $description, $price, $stock);
@@ -112,16 +112,13 @@ class Product {
     }
 
     //returns all products of the linked order id
-    public function getProductFromOrder($orderId) {
+    public function getProductsFromOrder($orderId) {
         //db connection
         $db = Database::getDatabase();
 
-        //query
-        $query = "SELECT * FROM product AS p JOIN Orders_has_Product AS o ON p.ProductId = o.Product_ProductId WHERE o.Orders_OrderId = $orderId";
+        $result = $db->selectProductFromOrder($orderId);
 
-        $db->doSQL($query);
-
-        $products = $this->returnResults($db->getResult());
+        $products = $this->returnResults($result);
 
         return $products;
     }
@@ -150,8 +147,36 @@ class Product {
     }
 
     // -------------------------------------- CREATE ---------------------------- //
-    public function createProduct() {
+    public function createProduct($sku, $name, $description, $price, $stock, $categoryId) {
+        $product = new Product(null, $sku, $name, $description, $price, $stock);
 
+        //db connection
+        $db = Database::getDatabase();
+
+        $bool = $db->createProduct($product, $categoryId);
+
+        return $bool;
+    }
+
+    // -------------------------------------- UPDATE --------------------------- //
+    public function updateProduct($productId, $sku, $name, $description, $price, $stock, $categoryId) {
+        $product = new Product($productId, $sku, $name, $description, $price, $stock);
+
+        //db connection
+        $db = Database::getDatabase();
+
+        $bool = $db->updateProduct($product, $categoryId);
+
+        return $bool;
+    }
+
+    // ---------------------------------- DELETE -------------------------------- //
+    public function deleteProduct($productId) {
+
+        //db connection
+        $db = Database::getDatabase();
+
+        $bool = $db->deleteProduct($productId);
     }
 }
 

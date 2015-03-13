@@ -87,6 +87,8 @@ class Database {
         $query = "INSERT INTO product (SKU, Name, Description, Price, Stock, Categories_CategoryId) VALUES (?, ?, ?, ?, ?, ?)";
 
         //local variables
+        $return = false;
+
         $SKU = $product->getSKU();
         $name = $product->getName();
         $description = $product->getDescription();
@@ -97,14 +99,23 @@ class Database {
 
         $stmt->bind_param('sssdii', $SKU, $name, $description, $price, $stock, $categoryId);
         $stmt->execute() or die ( $this->db->error);
+
+        if($stmt->affected_rows == 1){
+            $return = true;
+        }
         $stmt->close();
+
+        return $return;
     }
 
+    // --------------------- UPDATE PRODUCT ------------------- //
     public function updateProduct($product, $categoryId) {
         //query
         $query = "UPDATE Product SET SKU = ?, Name = ?, Price = ?, Stock = ?, Categories_CategoryId = ? WHERE ProductId = ?";
 
         //local variables
+        $ret = false;
+
         $id = $product->getId();
         $SKU = $product->getSKU();
         $name = $product->getName();
@@ -114,17 +125,31 @@ class Database {
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssdiii', $SKU, $name, $price, $stock, $categoryId, $id);
         $stmt->execute();
+
+        if ($stmt->affected_rows == 1) {
+            $ret = true;
+        }
         $stmt->close();
+
+        return $ret;
     }
 
+    // --------------------- DELETE PRODUCT ------------------- //
     public function deleteProduct($productId) {
+        $ret = false;
         //query
         $query = "DELETE FROM Product WHERE ProductId = ?";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $productId);
         $stmt->execute();
+
+        if ($stmt->affected_rows == 1) {
+            $ret = true;
+        }
         $stmt->close();
+
+        return $ret;
     }
 
     static function getDatabase() {

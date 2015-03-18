@@ -67,6 +67,7 @@ class Product {
         $this->stock = $stock;
     }
 
+    //Constructor
     public function __construct($id, $SKU, $name, $description, $price, $stock) {
         $this->setId($id);
         $this->setSKU($SKU);
@@ -177,6 +178,8 @@ class Product {
         $db = Database::getDatabase();
 
         $bool = $db->deleteProduct($productId);
+
+        return $bool;
     }
 }
 

@@ -19,6 +19,22 @@ class User {
     private $city;
     private $country;
 
+    //constructor
+    function __construct($id, $username, $password, $email, $phone, $firstName, $lastName, $address, $zip, $city, $country)
+    {
+        $this->id = $id;
+        $this->username = $username;
+        $this->password = $password;
+        $this->email = $email;
+        $this->phone = $phone;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->address = $address;
+        $this->zip = $zip;
+        $this->city = $city;
+        $this->country = $country;
+    }
+
     //Getters
     public function getId() {
         return $this->id;
@@ -109,7 +125,5 @@ class User {
         $this->country = $country;
     }
 
-    public function __construct() {
 
-    }
 }

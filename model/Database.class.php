@@ -31,33 +31,35 @@ class Database {
         //prepared statements + security
 
         //query
-        $query = "SELECT * FROM Product WHERE Categories_CategoryId = ?";
+        $query = "SELECT * FROM product WHERE Categories_CategoryId = ?";
 
-        $result = $this->selectPrepareStatement($query, $categoryId);
+        $result = $this->returnProductArray($query, $categoryId);
 
         return $result;
     }
 
+    // returns the selected product
     public function selectProduct($productId) {
         //query
-        $query = "SELECT * FROM Product WHERE ProductId = ?";
+        $query = "SELECT * FROM product WHERE ProductId = ?";
 
-        $result = $this->selectPrepareStatement($query, $productId);
+        $result = $this->returnProductArray($query, $productId);
 
         return $result;
     }
 
+    //returns all products from an order
     public function selectProductFromOrder($orderId) {
         //query
         $query = "SELECT * FROM product AS p JOIN Orders_has_Product AS o ON p.ProductId = o.Product_ProductId WHERE o.Orders_OrderId = ?";
 
-        $result = $this->selectPrepareStatement($query, $orderId);
+        $result = $this->returnProductArray($query, $orderId);
 
         return $result;
     }
 
     //prepared statement and returns result when selecting product from the database
-    private function selectPrepareStatement($query, $id) {
+    private function returnProductArray($query, $id) {
         //prepare statement
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
@@ -111,7 +113,7 @@ class Database {
     // --------------------- UPDATE PRODUCT ------------------- //
     public function updateProduct($product, $categoryId) {
         //query
-        $query = "UPDATE Product SET SKU = ?, Name = ?, Price = ?, Stock = ?, Categories_CategoryId = ? WHERE ProductId = ?";
+        $query = "UPDATE product SET SKU = ?, Name = ?, Price = ?, Stock = ?, Categories_CategoryId = ? WHERE ProductId = ?";
 
         //local variables
         $ret = false;
@@ -138,7 +140,7 @@ class Database {
     public function deleteProduct($productId) {
         $ret = false;
         //query
-        $query = "DELETE FROM Product WHERE ProductId = ?";
+        $query = "DELETE FROM product WHERE ProductId = ?";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $productId);
@@ -152,6 +154,81 @@ class Database {
         return $ret;
     }
 
+    // -------------------- CHECK USER ------------------- //
+    public function checkUser($username, $password) {
+        $ret = false;
+
+        $query = "SELECT * FROM users WHERE Username = ? AND Password = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $username, $password);
+        $stmt->execute();
+        $stmt->store_result();
+        if ($stmt->num_rows > 0) {
+            $ret = true;
+        }
+        $stmt->close();
+
+        return $ret;
+    }
+
+    // ------------------- GET USER -------------------- //
+    public function getUser($username) {
+        $query = "SELECT * FROM users WHERE Username = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($id, $username, $password, $email, $phone, $firstName, $lastName, $address, $zip, $city, $country);
+
+        while ($stmt->fetch()) {
+            $result[] = [
+                "UserId" => $id,
+                "Username" => $username,
+                "Password" => $password,
+                "Email" => $email,
+                "Phone" => $phone,
+                "FirstName" => $firstName,
+                "LastName" => $lastName,
+                "Address" => $address,
+                "Zip" => $zip,
+                "City" => $city,
+                "Country" => $country
+            ];
+        }
+        $stmt->close();
+
+        return $result;
+    }
+
+    // ------------------- ORDER FOR USER -------------- //
+    public function createOrder($userId, $order) {
+        // local variables
+        $ret = false;
+
+        $paid = $order->getPaid();
+        $date = $order->getDate();
+        $paymentDate = $order->getPaymentDate();
+        $address = $order->getAddress();
+        $zip = $order->getZip();
+        $city = $order->getCity();
+        $country = $order->getCountry();
+
+        $query = "INSERT INTO orders (`Users_UserId`, `Paid`, `Date`, `PaymentDate`, `Address`, `Zip`, `City`, `Country`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iissssss', $userId, $paid, $date, $paymentDate, $address, $zip, $city, $country);
+        $stmt->execute();
+        if($stmt->affected_rows > 0) {
+            $ret = true;
+        }
+        $stmt->close();
+
+        return $ret;
+    }
+
+    
     static function getDatabase() {
         if (Database::$instance == null) {
             Database::$instance = new Database();

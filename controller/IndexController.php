@@ -15,7 +15,9 @@ include '../model/Category.class.php';
 include '../view/footerView.php';
 
 
-$allProducts = Product::getAllProductsFromCategory(1);
+$allProducts = Product::getAllProductsDescending();
+$categories = Category::getCategories();
+
 loadHeader();
-loadProducts($allProducts);
+loadProducts($allProducts, $categories);
 loadFooter();

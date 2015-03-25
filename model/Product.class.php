@@ -81,6 +81,7 @@ class Product {
         $this->setId($id);
         $this->setSKU($SKU);
         $this->setName($name);
+        $this->setSmallDescription($smallDescription);
         $this->setDescription($description);
         $this->setPrice($price);
         $this->setStock($stock);
@@ -93,8 +94,10 @@ class Product {
         //db connection
         $db = Database::getDatabase();
 
+        $result = $db->selectAllProducts();
+
         $products = array();
-        while ($row = $db->selectAllProducts) {
+        while ($row = $result->fetch_assoc()) {
             $id = $row['ProductId'];
             $sku = $row['SKU'];
             $name = $row['Name'];
@@ -106,8 +109,7 @@ class Product {
             $product = new Product($id, $sku, $name, $small_description, $description, $price, $stock);
 
             $products[] = $product;
-        }
-
+        };
         return $products;
     }
 

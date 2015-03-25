@@ -29,11 +29,11 @@ class Database {
     //return all products ordered by desc
     public function selectAllProducts() {
         //query
-        $query = "SELECT * FROM product ORDER BY desc";
+        $query = "SELECT * FROM product ORDER BY ProductId desc";
 
         $result = $this->db->query($query);
 
-        return $result->fetch_assoc();
+        return $result;
     }
 
     // products from categoryId

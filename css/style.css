@@ -17,6 +17,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 
 html {
+    height: 100%;
     box-sizing: border-box;
 }
 
@@ -25,6 +26,7 @@ html {
 }
 
 body {
+    height: 100%;
     line-height: 1;
 }
 
@@ -103,9 +105,12 @@ body {
 /* =Template
 -------------------------------------------------------------- */
 #wrapper {
-    width: 100%;
+    min-height: 100%;
+    height: auto !important;
     height: 100%;
-    margin: 0 auto; }
+    width: 100%;
+    margin: 0 auto -100px;
+}
 
 #main {
     overflow: auto;
@@ -174,10 +179,25 @@ body {
     width: 15%;
     height: 80px;
 }
-.title {
+
+.description {
     float: left;
-    width: 70%;
+    width: 68%;
     height: 80px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.title {
+    width: 100%;
+    height: 40px;
+    display: block;
+    font-size: 20px !important;
+}
+.small_description {
+    width: 100%;
+    height: 40px;
+    display: block;
+    font-size: 14px !important;
 }
 .price {
     float: left;
@@ -185,7 +205,7 @@ body {
     height: 80px;
     right: 0;
 }
-.image, .title, .price {
+.image, .price {
     padding-top: 10px;
     text-align: center;
     vertical-align: middle;
@@ -306,10 +326,14 @@ header.smaller nav a {
 footer {
     clear: both;
     background-color: #1799b1;
-    height: 100px;
+
     margin-top: 30px;
     margin-bottom: 0;
     padding-top: 30px;
+}
+
+footer, .push {
+    height: 100px;
 }
 
 #footer_container {

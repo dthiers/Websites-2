@@ -1,15 +1,7 @@
-<?php function loadProducts($arrProducts) {
-    var_dump($arrProducts);
+<?php function loadProducts($arrProducts, $categories)
+{
 
-foreach ($arrProducts as $product){
-echo $product->getName();
-}
-
-
-
-
-
- ?>
+    ?>
     <div id="wrapper">
 
         <div id="main">
@@ -22,28 +14,27 @@ echo $product->getName();
                     <p>
                     <ul>
                         <?php
-                        $categories = Category::getCategories();
                         $counter = 0;
-                        foreach($categories as $categoryItem){
-                            if ($categoryItem->getParent() == 0) {?>
-                            <input id="<?php echo "input".$counter;?>" type="checkbox" class="main_category">
+                        foreach ($categories as $categoryItem) {
+                            if ($categoryItem->getParent() == 0) { ?>
+                                <input id="<?php echo "input" . $counter; ?>" type="checkbox" class="main_category">
                                 <li>
-                                    <a class="main" href="#"><?php echo $categoryItem->getName();?></a>
-                                    <label for="<?php echo "input".$counter;?>"><?php //echo $categoryItem->getName(); ?> ></label>
-                        <?php
-                        } ?>
-                            <ul>
+                                <a class="main" href="#"><?php echo $categoryItem->getName(); ?></a>
+                                <label for="<?php echo "input" . $counter; ?>"><?php //echo $categoryItem->getName(); ?>
+                                    ></label>
                             <?php
-                            foreach($categories as $item) {
-                                if ($categoryItem->getId() == $item->getParent())
-                                {
-                                    ?>
+                            } ?>
+                            <ul>
+                                <?php
+                                foreach ($categories as $item) {
+                                    if ($categoryItem->getId() == $item->getParent()) {
+                                        ?>
                                         <li><a href="#"><?php echo $item->getName(); ?></a></li>
                                     <?php
-                                }
-                            }?>
+                                    }
+                                }?>
                             </ul></li>
-                        <?php
+                            <?php
                             $counter++;
                         }
                         ?>
@@ -54,17 +45,22 @@ echo $product->getName();
                 <!-- categories -->
                 <div class="container_store2">
                     <?php
-                    for ($i = 0; $i < 20; $i++) {
+                    foreach ($arrProducts as $productItem) {
                         ?>
                         <div class="item">
                             <div class="image">
                                 <img src=<?php echo "../images/" . (rand(1, 5)) . ".jpg"; ?>>
                             </div>
-                            <div class="title">
-                                Dit is een test titel nummer <?php echo $i + 1 ?>
+                            <div class="description">
+                                <div class="title">
+                                    <?php echo $productItem->getName(); ?>
+                                </div>
+                                <div class="small_description">
+                                    <?php echo $productItem->getSmallDescription(); ?>
+                                </div>
                             </div>
                             <div class="price">
-                                prijs: <?php echo(rand(0.1, 1000)); ?>
+                                <?php echo "€" . $productItem->getPrice(); ?>
                             </div>
                         </div><!-- .item -->
                     <?php
@@ -73,10 +69,14 @@ echo $product->getName();
                 </div>
                 <!-- container store -->
             </div>
+            <div class="clearer"></div>
             <!-- content -->
         </div>
         <!-- #main -->
         <div class="clearer"></div>
+
+        <div class="push"></div>
+
     </div><!-- /#wrapper -->
 <?php
 }

@@ -28,12 +28,29 @@ class Database {
 
     // products from categoryId
     public function selectProductsCategory($categoryId) {
-        //prepared statements + security
-
         //query
-        $query = "SELECT * FROM product WHERE Parent_CategoryId = ?";
+        $query = "SELECT * FROM product AS p JOIN product_has_categories AS pc ON p.ProductId = pc.Product_ProductId WHERE pc.Categories_CategoryId = ?";
 
-        $result = $this->returnProductArray($query, $categoryId);
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $categoryId);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($productId, $sku, $name, $smallDescription, $description, $price, $stock, $imageURL, $x, $categoryId);
+
+        while ($stmt->fetch()) {
+            $result[] = [
+                "ProductId" => $productId,
+                "SKU" => $sku,
+                "Name" => $name,
+                "SmallDescription" => $smallDescription,
+                "Description" => $description,
+                "Price" => $price,
+                "Stock" => $stock,
+                "ImageURL" => $imageURL,
+                "CategoryId" => $categoryId
+            ];
+        }
+        $stmt->close();
 
         return $result;
     }
@@ -51,9 +68,27 @@ class Database {
     //returns all products from an order
     public function selectProductFromOrder($orderId) {
         //query
-        $query = "SELECT * FROM product AS p JOIN Orders_has_Product AS o ON p.ProductId = o.Product_ProductId WHERE o.Orders_OrderId = ?";
+        $query = "SELECT * FROM product AS p JOIN orders_has_product AS o ON p.ProductId = o.Product_ProductId WHERE o.Orders_OrderId = ?";
 
-        $result = $this->returnProductArray($query, $orderId);
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $categoryId);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($productId, $sku, $name, $smallDescription, $description, $price, $stock, $imageURL, $x, $orderId);
+
+        while ($stmt->fetch()) {
+            $result[] = [
+                "ProductId" => $productId,
+                "SKU" => $sku,
+                "Name" => $name,
+                "SmallDescription" => $smallDescription,
+                "Description" => $description,
+                "Price" => $price,
+                "Stock" => $stock,
+                "ImageURL" => $imageURL,
+                "CategoryId" => $orderId
+            ];
+        }
 
         return $result;
     }
@@ -65,7 +100,7 @@ class Database {
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($productId, $sku, $name, $smallDescription, $description, $price, $stock);
+        $stmt->bind_result($productId, $sku, $name, $smallDescription, $description, $price, $stock, $imageURL);
 
         while ($stmt->fetch()) {
             $result[] = [
@@ -75,7 +110,8 @@ class Database {
                 "SmallDescription" => $smallDescription,
                 "Description" => $description,
                 "Price" => $price,
-                "Stock" => $stock
+                "Stock" => $stock,
+                "ImageURL" => $imageURL
             ];
         }
 
@@ -195,7 +231,7 @@ class Database {
         return $ret;
     }
     // ------- updateProduct + updateProductCategory, call updateProductCategory right after updateProduct to update product ------------ //
-    
+
 
     // --------------------- DELETE PRODUCT ------------------- //
     public function deleteProduct($productId) {

@@ -89,13 +89,13 @@ class Product {
     // ------------------------------------ READ ------------------------------------------ //
 
     //returns an array of products of the linked category
-    public function getAllProductsFromCategory($categoryId) {
+    static function getAllProductsFromCategory($categoryId) {
         //db connection
         $db = Database::getDatabase();
 
         $result = $db->selectProductsCategory($categoryId);
 
-        $products = $this->returnResults($result);
+        $products = Product::returnResults($result);
 
         return $products;
     }
@@ -135,7 +135,7 @@ class Product {
     }
 
     //return all products of the given result
-    private function returnResults($result) {
+    private static function returnResults($result) {
         $products = array();
 
         //loop through all the results

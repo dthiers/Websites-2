@@ -37,17 +37,24 @@
         <h1 id="logo">
             Webshop
         </h1>
+
         <nav>
 
             <?php
-            for ($i = 0; $i < 5; $i++){
+            $nav = Navigation::getNavigation();
+            foreach ($nav as $navItem){
                 ?>
                 <div class="nav_item">
-                    <a href="#">Test <?php echo $i+1?> </a>
+                    <a href="<?php echo $navItem->getLink().'.php';?>"><?php echo $navItem->getLabel();?> </a>
                 </div>
             <?php
             }
             ?>
+            <div class="nav_item">
+                <a href="#">Login </a>
+            </div>
+
+
         </nav>
     </div>
 </header><!-- /header -->

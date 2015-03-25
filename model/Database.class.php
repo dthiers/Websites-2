@@ -325,6 +325,24 @@ class Database {
         return $ret;
     }
 
+    // ------------------- NAVIGATION -------------- //
+    public function getNavigation(){
+        $query = "SELECT * FROM navigation";
+
+        $result = $this->db->query($query);
+
+        return $result;
+    }
+
+    // ------------------- CATEGORIES -------------- //
+    public function getCategories(){
+        $query = "SELECT * FROM categories";
+
+        $result = $this->db->query($query);
+
+        return $result;
+    }
+
     
     static function getDatabase() {
         if (Database::$instance == null) {

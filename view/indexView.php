@@ -22,23 +22,31 @@ echo $product->getName();
                     <p>
                     <ul>
                         <?php
-                        for ($u = 0; $u < 10; $u++) {
-                            ?>
-                            <li><a href="#">Category <?php echo $u + 1;?></a></li>
+                        $categories = Category::getCategories();
+                        $counter = 0;
+                        foreach($categories as $categoryItem){
+                            if ($categoryItem->getParent() == 0) {?>
+                            <input id="<?php echo "input".$counter;?>" type="checkbox" class="main_category">
+                                <li>
+                                    <a class="main" href="#"><?php echo $categoryItem->getName();?></a>
+                                    <label for="<?php echo "input".$counter;?>"><?php //echo $categoryItem->getName(); ?> ></label>
                         <?php
+                        } ?>
+                            <ul>
+                            <?php
+                            foreach($categories as $item) {
+                                if ($categoryItem->getId() == $item->getParent())
+                                {
+                                    ?>
+                                        <li><a href="#"><?php echo $item->getName(); ?></a></li>
+                                    <?php
+                                }
+                            }?>
+                            </ul></li>
+                        <?php
+                            $counter++;
                         }
                         ?>
-                        <li>
-                            <ul>
-                                <?php
-                                for ($u = 0; $u < 10; $u++) {
-                                    ?>
-                                    <li><a href="#">Category <?php echo $u + 1;?></a></li>
-                                <?php
-                                }
-                                ?>
-                            </ul>
-                        </li>
                     </ul>
                     </p>
 

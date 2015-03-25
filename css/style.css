@@ -44,6 +44,46 @@ a img {
     border: none;
 }
 
+label {
+    display: inline;
+    float: right;
+    margin-right: 60%;
+}
+
+.main {
+    display: inline !important;
+}
+
+.main_category{
+    display: none;
+}
+
+
+#categories input + li ul {
+    max-height: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+}
+
+#categories input:checked + li ul {
+    max-height: 1000px;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s;
+}
+
+#categories input + li ul li {
+    max-height: 0;
+    transition: all 0.2s;
+}
+
+#categories input:checked + li ul li {
+    max-height: 600px;
+    transition: all 0.2s;
+}
+
 /* =Global
 -------------------------------------------------------------- */
 

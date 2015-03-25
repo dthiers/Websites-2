@@ -8,9 +8,12 @@
 
 include '../model/Database.class.php';
 include '../model/Product.class.php';
-include '../view/index.php';
+include '../view/indexView.php';
 include '../view/headerView.php';
+include '../model/Navigation.class.php';
+include '../model/Category.class.php';
 include '../view/footerView.php';
+
 
 $allProducts = Product::getAllProductsFromCategory(1);
 loadHeader();

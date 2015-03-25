@@ -8,4 +8,5 @@
 
 function loadHeader() {
     include '../header/header.php';
+
 }

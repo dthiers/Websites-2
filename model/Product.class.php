@@ -88,6 +88,29 @@ class Product {
 
     // ------------------------------------ READ ------------------------------------------ //
 
+    //returns an array of all products ordered by desc
+    static function getAllProductsDescending() {
+        //db connection
+        $db = Database::getDatabase();
+
+        $products = array();
+        while ($row = $db->selectAllProducts) {
+            $id = $row['ProductId'];
+            $sku = $row['SKU'];
+            $name = $row['Name'];
+            $small_description = $row['Small_Description'];
+            $description = $row['Description'];
+            $price = $row['Price'];
+            $stock = $row['Stock'];
+
+            $product = new Product($id, $sku, $name, $small_description, $description, $price, $stock);
+
+            $products[] = $product;
+        }
+
+        return $products;
+    }
+
     //returns an array of products of the linked category
     static function getAllProductsFromCategory($categoryId) {
         //db connection

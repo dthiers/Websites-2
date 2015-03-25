@@ -26,6 +26,16 @@ class Database {
 
     // ---------------------- READ --------------------- //
 
+    //return all products ordered by desc
+    public function selectAllProducts() {
+        //query
+        $query = "SELECT * FROM product ORDER BY desc";
+
+        $result = $this->db->query($query);
+
+        return $result->fetch_assoc();
+    }
+
     // products from categoryId
     public function selectProductsCategory($categoryId) {
         //query

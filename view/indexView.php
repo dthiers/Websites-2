@@ -1,5 +1,5 @@
-<?php function loadProducts($arrProducts)
-    /*var_dump($arrProducts);
+<?php function loadProducts($arrProducts) {
+    var_dump($arrProducts);
 
 foreach ($arrProducts as $product){
 echo $product->getName();
@@ -7,9 +7,9 @@ echo $product->getName();
 
 
 
-*/
 
-{ ?>
+
+ ?>
     <div id="wrapper">
 
         <div id="main">

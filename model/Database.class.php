@@ -31,7 +31,7 @@ class Database {
         //prepared statements + security
 
         //query
-        $query = "SELECT * FROM product WHERE Categories_CategoryId = ?";
+        $query = "SELECT * FROM product WHERE Parent_CategoryId = ?";
 
         $result = $this->returnProductArray($query, $categoryId);
 
@@ -65,13 +65,14 @@ class Database {
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($productId, $sku, $name, $description, $price, $stock);
+        $stmt->bind_result($productId, $sku, $name, $smallDescription, $description, $price, $stock);
 
         while ($stmt->fetch()) {
             $result[] = [
                 "ProductId" => $productId,
                 "SKU" => $sku,
                 "Name" => $name,
+                "SmallDescription" => $smallDescription,
                 "Description" => $description,
                 "Price" => $price,
                 "Stock" => $stock
@@ -84,22 +85,23 @@ class Database {
     }
 
     // --------------------- CREATE PRODUCT ------------------- //
-    public function createProduct($product, $categoryId) {
+    public function createProduct($product) {
         //query
-        $query = "INSERT INTO product (SKU, Name, Description, Price, Stock, Categories_CategoryId) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO product (SKU, Name, Small_Description, Description, Price, Stock) VALUES (?, ?, ?, ?, ?, ?)";
 
         //local variables
         $return = false;
 
         $SKU = $product->getSKU();
         $name = $product->getName();
+        $smallDescription = $product->getSmallDescription();
         $description = $product->getDescription();
         $price = $product->getPrice();
         $stock = $product->getStock();
 
         $stmt = $this->db->prepare($query) or die( $this->db->error);
 
-        $stmt->bind_param('sssdii', $SKU, $name, $description, $price, $stock, $categoryId);
+        $stmt->bind_param('ssssdi', $SKU, $name, $smallDescription, $description, $price, $stock);
         $stmt->execute() or die ( $this->db->error);
 
         if($stmt->affected_rows == 1){
@@ -110,22 +112,29 @@ class Database {
         return $return;
     }
 
-    // --------------------- UPDATE PRODUCT ------------------- //
-    public function updateProduct($product, $categoryId) {
+    // ----------------- GET LAST PRODUCT ID ------------- //
+    private function getLastProductId() {
         //query
-        $query = "UPDATE product SET SKU = ?, Name = ?, Price = ?, Stock = ?, Categories_CategoryId = ? WHERE ProductId = ?";
+        $query = "SELECT ProductId FROM product ORDER BY desc LIMIT 1";
+        $result = $this->db->query($query);
+        while ($row = $result->fetch_assoc()) {
+            $id = $row['ProductId'];
+        }
+
+        return $id;
+    }
+
+    // ----------------- INSERT PRODUCTID + CATEGORYID --------- //
+    public function createProductCategory($categoryId) {
+        //query
+        $query = "INSERT INTO `product_has_categories` (`Product_ProductId`, `Categories_CategoryId`) VALUES (?, ?)";
 
         //local variables
         $ret = false;
-
-        $id = $product->getId();
-        $SKU = $product->getSKU();
-        $name = $product->getName();
-        $price = $product->getPrice();
-        $stock = $product->getStock();
+        $productId = $this->getLastProductId();
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssdiii', $SKU, $name, $price, $stock, $categoryId, $id);
+        $stmt->bind_param('ii', $productId, $categoryId);
         $stmt->execute();
 
         if ($stmt->affected_rows == 1) {
@@ -135,6 +144,58 @@ class Database {
 
         return $ret;
     }
+    // ---------- createProduct + createProductCategory, call the second method right after the first method to create product --------- //
+
+    // --------------------- UPDATE PRODUCT ------------------- //
+    public function updateProduct($product, $categoryId) {
+        //query
+        $query = "UPDATE product SET SKU = ?, Name = ?, Price = ?, Stock = ? WHERE ProductId = ?";
+
+        //local variables
+        $ret = false;
+
+        $id = $product->getId();
+        $SKU = $product->getSKU();
+        $name = $product->getName();
+        $smallDescription = $product->getSmallDescription();
+        $description = $product->getDescription();
+        $price = $product->getPrice();
+        $stock = $product->getStock();
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssssdii', $SKU, $name, $smallDescription, $description, $price, $stock, $id);
+        $stmt->execute();
+
+        if ($stmt->affected_rows == 1) {
+            $ret = true;
+        }
+        $stmt->close();
+
+        return $ret;
+    }
+
+    // ------------------ UPDATE PRODUCT CATEGORY ID -------------- //
+    public function updateProductCategory($product, $categoryId) {
+        //query
+        $query = "UPDATE `Product_has_Categories` SET `Categories_CategoryId` = ? WHERE `Product_ProductId` = ?";
+
+        //local variables
+        $ret = false;
+        $id = $product->getId();
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $categoryId, $id);
+        $stmt->execute();
+
+        if ($stmt->affected_rows == 1) {
+            $ret = true;
+        }
+        $stmt->close();
+
+        return $ret;
+    }
+    // ------- updateProduct + updateProductCategory, call updateProductCategory right after updateProduct to update product ------------ //
+    
 
     // --------------------- DELETE PRODUCT ------------------- //
     public function deleteProduct($productId) {

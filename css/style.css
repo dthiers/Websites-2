@@ -29,8 +29,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  clear: both;
-  font-weight: normal;
+    clear: both;
+    font-weight: normal;
 }
 
 ol, ul {
@@ -81,7 +81,7 @@ body {
 
 .container {
     height: 100%;
-    width: 80%;
+    width: 86%;
     margin: 0 auto;
     padding: 0 30px;
 }
@@ -92,7 +92,7 @@ body {
 }
 .container_store2 {
     float: left;
-    width: 66%;
+    width: 65%;
 }
 
 .container_store .container_element {
@@ -115,11 +115,11 @@ body {
 .item {
     margin: 5px;
     padding-left: 10px;
-    width: 75%;
+    width: 100%;
     min-width: 450px;
     height: 100px;
 
-    //border-radius: 3px;
+//border-radius: 3px;
     /*border: 0.1em solid #d3d3d3; */
     border-bottom: 0.1em solid #c0c0c0;
     float: right;
@@ -136,7 +136,7 @@ body {
 }
 .title {
     float: left;
-   width: 70%;
+    width: 70%;
     height: 80px;
 }
 .price {
@@ -154,8 +154,8 @@ body {
 
 #categories {
     float: left;
-    width: 16%;
-    padding-left: 50px;
+    width: 23%;
+    padding-left: 7%;
 }
 #categories a{
     display: block;
@@ -217,16 +217,16 @@ header h1#logo {
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
-  header nav {
+header nav {
     display: inline-block;
     float: right;
-  }
+}
 .nav_item {
     display: block;
     float:left;
     height: 100%;
     width: auto;
-  }
+}
 .nav_item:hover {
     float: left;
     background-color: #158A9F;
@@ -277,4 +277,4 @@ footer {
     height: 100%;
     width: 80%;
     margin: 0 auto;
- }
+}

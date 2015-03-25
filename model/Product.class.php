@@ -126,7 +126,7 @@ class Product {
     }
 
     //returns a product of the given product id
-    public function getProduct($productId) {
+    static function getProduct($productId) {
         //db connection
         $db = Database::getDatabase();
 

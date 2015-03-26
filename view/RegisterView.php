@@ -65,7 +65,31 @@ function showRegister($categories)
                             </tr>
                             <tr>
                                 <td>Phone number:</td>
-                                <td><input type="number" name="phone"></td>
+                                <td><input type="tel" name="phone"></td>
+                            </tr>
+                            <tr>
+                                <td>Firstname:</td>
+                                <td><input type="text" name="firstName"></td>
+                            </tr>
+                            <tr>
+                                <td>Lastname:</td>
+                                <td><input type="text" name="lastName"></td>
+                            </tr>
+                            <tr>
+                                <td>Address:</td>
+                                <td><input type="text" name="address"></td>
+                            </tr>
+                            <tr>
+                                <td>ZIP:</td>
+                                <td><input type="text" name="zip"></td>
+                            </tr>
+                            <tr>
+                                <td>City:</td>
+                                <td><input type="text" name="city"></td>
+                            </tr>
+                            <tr>
+                                <td>Country:</td>
+                                <td><input type="text" name="country"></td>
                             </tr>
                             <tr>
                                 <td></td>

@@ -45,7 +45,7 @@ function showRegister($categories)
                 <!-- categories -->
 
                 <div class="container_store2">
-                    <form method="POST" action="#" onsubmit="return validate(this);">
+                    <form method="POST" action="CreateUserController.php" onsubmit="return validate(this);">
                         <table>
                             <tr>
                                 <td>Username:</td>

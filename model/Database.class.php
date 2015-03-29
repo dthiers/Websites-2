@@ -335,6 +335,38 @@ class Database {
         return $ret;
     }
 
+    // ------------------- USER CREATE ------------ //
+    public function createUser($user) {
+        // local variables
+        $return = false;
+
+        $username = $user->getUserName();
+        $password = $user->getPassword();
+        $email = $user->getEmail();
+        $phone = $user->getPhone();
+        $firstName = $user->getFirstName();
+        $lastName = $user->getLastName();
+        $address = $user->getAddress();
+        $zip = $user->getZip();
+        $city = $user->getCity();
+        $country = $user->getCountry();
+
+        $newPassword = $username.$password."salt";
+        $encryptedPassword = sha1($newPassword);
+
+        $query = "INSERT INTO users (Username, Password, Email, Phone, FirstName, LastName, Address, Zip, City, Country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssssssssss', $username, $encryptedPassword, $email, $phone, $firstName, $lastName, $address, $zip, $city, $country);
+        $stmt->execute() or die($stmt->error);
+        if($stmt->affected_rows > 0) {
+            $return = true;
+        }
+        $stmt->close();
+
+        return $return;
+    }
+
     // ------------------- NAVIGATION -------------- //
     public function getNavigation(){
         $query = "SELECT * FROM navigation";

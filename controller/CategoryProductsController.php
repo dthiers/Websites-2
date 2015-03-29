@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: dionthiers
- * Date: 11/03/15
- * Time: 16:19
+ * User: Raymond Phua
+ * Date: 29-3-2015
+ * Time: 23:12
  */
 
 include '../model/Database.class.php';
@@ -14,9 +14,10 @@ include '../model/Navigation.class.php';
 include '../model/Category.class.php';
 include '../view/footerView.php';
 
-$allProducts = Product::getAllProductsDescending();
+$categoryId = $_GET['id'];
+$products = Product::getAllProductsFromCategory($categoryId);
 $categories = Category::getCategories();
 
 loadHeader();
-loadProducts($allProducts, $categories);
+loadProducts($products, $categories);
 loadFooter();

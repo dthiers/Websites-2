@@ -10,9 +10,9 @@ include '../model/Database.class.php';
 include '../view/RegisterView.php';
 include '../model/User.class.php';
 
-include '../view/headerView.php';
+include '../view/HeaderView.php';
 include '../model/Navigation.class.php';
-include '../view/footerView.php';
+include '../view/FooterView.php';
 
 session_start();
 

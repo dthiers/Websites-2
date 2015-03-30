@@ -14,10 +14,10 @@ include '../model/Product.class.php';
 include '../model/Order.class.php';
 include '../model/User.class.php';
 //include '../view/WebshopView.php';
-include '../view/headerView.php';
+include '../view/HeaderView.php';
 include '../view/OrdersView.php';
 include '../model/Navigation.class.php';
-include '../view/footerView.php';
+include '../view/FooterView.php';
 
 $db = Database::getDatabase();
 $user = User::getUser($_SESSION['username']);

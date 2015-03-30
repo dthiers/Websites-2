@@ -15,8 +15,10 @@ function loadHome()
             <div id="content">
 
                 <div id="container_home">
-                    <div id="content_home">
+                    <div id="login_head">
                         <h1>Home</h1>
+                    </div>
+                    <div id="content_home">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed bibendum nibh. Sed non leo sapien. In hac habitasse platea dictumst. Integer dui velit, tempor ac sem ut, ultrices fermentum tellus. Phasellus accumsan sed sapien eu gravida. Cras augue risus, elementum ac velit non, rutrum hendrerit dui. Donec pharetra arcu nec lacus euismod rutrum. Suspendisse porttitor diam erat, quis euismod eros dapibus vel. Nunc id semper metus. Curabitur ornare massa ut libero mattis, eu consectetur dui egestas. Sed efficitur mollis justo, et scelerisque magna luctus a. Aliquam luctus enim ac aliquam hendrerit. Integer faucibus velit eleifend risus mattis aliquet. Phasellus at urna ex. Nulla massa augue, scelerisque a imperdiet non, eleifend a nulla. Curabitur congue tempor est, et lobortis risus accumsan a.
                         </p>

@@ -18,9 +18,9 @@ include '../model/Order.class.php';
 include '../model/User.class.php';
 include '../model/Product.class.php';
 
-include '../view/headerView.php';
+include '../view/HeaderView.php';
 include '../model/Navigation.class.php';
-include '../view/footerView.php';
+include '../view/FooterView.php';
 
 if ($username != "") {
     $user = User::getUser($username);

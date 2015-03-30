@@ -12,10 +12,10 @@ include '../model/Database.class.php';
 include '../model/Product.class.php';
 include '../view/ProductView.php';
 
-include '../view/headerView.php';
+include '../view/HeaderView.php';
 include '../model/Navigation.class.php';
 include '../model/Category.class.php';
-include '../view/footerView.php';
+include '../view/FooterView.php';
 
 // get everything from the model
 $id = $_GET['id']; // get id from the $_GET. ['id'] because the a href link = ProductController?id=x

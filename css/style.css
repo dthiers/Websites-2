@@ -293,7 +293,6 @@ section.color {
     width: 60%;
     height: 100%;
     min-height: 400px;
-    border-top: 0.1em solid #c0c0c0;
     border-bottom: 0.1em solid #c0c0c0;
 }
 
@@ -647,9 +646,17 @@ a.fill_order_container {
     font-size: 22px !important;
 }
 
-#product_details input[type='submit']{
+
+#product_details a {
+    background-color: #1799b1;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    padding: 8px 18px;
+    text-decoration: none;
+    font: inherit;
+    float: right;
     margin: 30px 0 5px 0;
-    float:right;
 }
 
 #productinfo {
@@ -666,7 +673,12 @@ a.fill_order_container {
 .right_label {
     width: 100%;
     border-bottom: 0.1em solid #c0c0c0;
+    font-weight: lighter !important;
     font-size: 16px !important;
+}
+
+.left_label, .right_label {
+    padding: 10px;
 }
 
 
@@ -685,4 +697,21 @@ input[type="submit"] {
 input[type="button"]:hover,
 input[type="submit"]:hover {
     background-color: #158A9F;
+}
+
+
+/*------------------ Breadcrumbs ------------------*/
+#breadcrumbs {
+    margin: -50px auto 50px;
+    width: 85%;
+}
+
+#breadcrumbs a{
+    text-decoration: none;
+    color: black;
+}
+
+.bread_pointer {
+    margin: 0 1px 0 6px;
+    color: #158A9F;
 }

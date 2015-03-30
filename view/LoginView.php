@@ -17,6 +17,10 @@ function showLogin()
                     <div id="login_head">
                         <h1>Login</h1>
                     </div><!-- login_head -->
+                    <div id="breadcrumbs">
+                        <a href="../controller/HomeController.php">Home</a><span class="bread_pointer">></span>
+                        <a href="../controller/LoginController.php">Login</a>
+                    </div><!-- breadcrumbs -->
                     <div id="login">
                     <form method="GET" action="CheckLoginController.php" class="form-style">
                         <ul>

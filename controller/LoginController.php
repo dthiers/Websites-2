@@ -9,9 +9,9 @@
 include '../model/Database.class.php';
 include '../view/LoginView.php';
 
-include '../view/headerView.php';
+include '../view/HeaderView.php';
 include '../model/Navigation.class.php';
-include '../view/footerView.php';
+include '../view/FooterView.php';
 
 // load views and if needed, give the models
 loadHeader();

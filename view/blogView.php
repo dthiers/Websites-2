@@ -19,6 +19,10 @@ function loadBlog($blog)
                     <div id="blog_head">
                         <h1>Blog</h1>
                     </div><!-- blog_head -->
+                    <div id="breadcrumbs">
+                        <a href="../controller/HomeController.php">Home</a><span class="bread_pointer">></span>
+                        <a href="../controller/BlogController.php">Blog</a>
+                    </div><!-- breadcrumbs -->
                     <div id="content_blog">
                        <?php
                        foreach($blog as $post)

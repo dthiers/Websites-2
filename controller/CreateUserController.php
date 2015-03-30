@@ -11,8 +11,8 @@ session_start();
 include '../model/Database.class.php';
 include '../model/User.class.php';
 include '../view/RegisterView.php';
-include '../view/headerView.php';
-include '../view/footerView.php';
+include '../view/HeaderView.php';
+include '../view/FooterView.php';
 
 $username = $_POST['username'];
 $password = $_POST['password'];

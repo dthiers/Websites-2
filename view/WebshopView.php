@@ -8,6 +8,10 @@
                 <div id="login_head">
                     <h1>Webshop</h1>
                 </div>
+                <div id="breadcrumbs">
+                    <a href="../controller/HomeController.php">Home</a><span class="bread_pointer">></span>
+                    <a href="../controller/WebshopController.php">Webshop</a>
+                </div><!-- breadcrumbs -->
                 <!-- login_head -->
 
                 <!-- HIER KOMT HET CATEGORIE MENU-->

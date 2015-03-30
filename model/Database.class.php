@@ -194,9 +194,10 @@ class Database {
     // ---------- createProduct + createProductCategory, call the second method right after the first method to create product --------- //
 
     // --------------------- UPDATE PRODUCT ------------------- //
-    public function updateProduct($product, $categoryId) {
+    public function updateProduct($product) {
+        var_dump($product);
         //query
-        $query = "UPDATE product SET SKU = ?, Name = ?, Price = ?, Stock = ? WHERE ProductId = ?";
+        $query = "UPDATE product SET SKU=?, Name=?, Small_Description=?, Description=?, Price=?, Stock=?, ImageURL=? WHERE ProductId=?";
 
         //local variables
         $ret = false;
@@ -210,9 +211,9 @@ class Database {
         $stock = $product->getStock();
         $img = $product->getImg();
 
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssdisi', $SKU, $name, $smallDescription, $description, $price, $stock, $img, $id);
-        $stmt->execute();
+        $stmt = $this->db->prepare($query) or die($stmt->error);
+        $stmt->bind_param('ssssdisi', $SKU, $name, $smallDescription, $description, $price, $stock, $img, $id) or die($stmt->error);
+        $stmt->execute() or die($stmt->error);
 
         if ($stmt->affected_rows == 1) {
             $ret = true;

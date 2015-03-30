@@ -46,12 +46,6 @@ a img {
     border: none;
 }
 
-label {
-    display: inline;
-    float: right;
-    margin-right: 60%;
-}
-
 .main {
     display: inline !important;
 }
@@ -275,6 +269,14 @@ section.color {
     width: 100%;
 }
 
+#blog_head {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    background-color: white;
+    width: 85%;
+    border-bottom: 0.1em solid #c0c0c0;
+}
+
 #content_blog {
     margin: 0 auto;
     width: 85%;
@@ -283,12 +285,7 @@ section.color {
 #new_blog {
     margin: 0 auto;
     margin-top: 50px;
-
     width: 85%;
-    //height: 200px;
-
-    //border: 1px solid grey;
-
     box-shadow: 0em 0em 1em #888888;
 }
 
@@ -303,13 +300,9 @@ section.color {
 
 .blog_item {
     margin: 5px;
-    padding-left: 10px;
     width: 100%;
     min-width: 450px;
     min-height: 100px;
-
-//border-radius: 3px;
-    /*border: 0.1em solid #d3d3d3; */
     border-bottom: 0.1em solid #c0c0c0;
     float: right;
 }
@@ -341,7 +334,23 @@ section.color {
 }
 
 
+/* = Register
+-------------------------------------------------------------- */
+#container_register {
+    width: 100%;
+}
 
+#form_register {
+    margin: 0 auto;
+    min-width: 410px;
+    width: 50%;
+}
+
+#form_register_head {
+    margin: 0 auto;
+    width: 85%;
+    border-bottom: 0.1em solid #c0c0c0;
+}
 
 /* =Header
     De header komt van internet aangezien we een verklein effect wilde
@@ -512,8 +521,15 @@ footer, .push {
     background-color: #158A9F;
 }
 
+.form-style ul li label {
+    width: 49%;
+    float: left;
+}
+
 input[type="text"],
 input[type="email"],
+input[type="password"],
+input[type="tel"],
 textarea{
     font: inherit;
 }

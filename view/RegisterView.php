@@ -1,6 +1,6 @@
 <?php
 
-function showRegister($categories)
+function showRegister()
 {
     ?>
 
@@ -8,95 +8,66 @@ function showRegister($categories)
         <div id="main">
             <div id="content">
 
-                <!-- CATEGORY MENU -->
-                <div id="categories">
-                    <h1>Categories</h1>
+                <div id="container_register">
+                    <div id="form_register_head">
+                        <h1>Registreer nieuwe gebruiker</h1>
+                    </div><!-- form_register_head -->
+                    <div id="form_register">
 
-                    <p>
-                    <ul>
-                        <?php
-                        $counter = 0;
-                        foreach ($categories as $categoryItem) {
-                            if ($categoryItem->getParent() == 0) { ?>
-                                <input id="<?php echo "input" . $counter; ?>" type="checkbox" class="main_category">
-                                <li>
-                                <a class="main" href="#"><?php echo $categoryItem->getName(); ?></a>
-                                <label for="<?php echo "input" . $counter; ?>"><?php //echo $categoryItem->getName(); ?>
-                                    ></label>
-                            <?php
-                            } ?>
+                        <form class="form-style" method="POST" action="CreateUserController.php" onsubmit="return validate(this);">
+
                             <ul>
-                                <?php
-                                foreach ($categories as $item) {
-                                    if ($categoryItem->getId() == $item->getParent()) {
-                                        ?>
-                                        <li><a href="#"><?php echo $item->getName(); ?></a></li>
-                                    <?php
-                                    }
-                                } ?>
-                            </ul></li>
-                            <?php
-                            $counter++;
-                        }
-                        ?>
-                    </ul>
-                    </p>
-                </div>
-                <!-- categories -->
+                                <li>
+                                    <label for="username">Gebruikersnaam: </label>
+                                    <input type="text" id="username" name="username" class="field-style field-split align-right" required/>
+                                </li>
+                                <li>
+                                    <label for="password">Wachtwoord: </label>
+                                    <input type="password" id="password" name="password" class="field-style field-split align-right" required />
+                                </li>
+                                <li>
+                                    <label for="confirm-password">Bevestig wachtwoord: </label>
+                                    <input type="password" id="confirm-password" name="confirm-password" class="field-style field-split align-right" required />
+                                </li>
+                                <li>
+                                    <label for="email">E-mailadres</label>
+                                    <input type="email" id="email" name="email" class="field-style field-split align-right" required />
+                                </li>
+                                <li>
+                                    <label for="phone">Telefoonnummer</label>
+                                    <input type="tel" id="phone" name="phone" class="field-style field-split align-right" />
+                                </li>
+                                <li>
+                                    <label for="firstName">Voornaam</label>
+                                    <input type="text" id="firstName" name="firstName" class="field-style field-split align-right" />
+                                </li>
+                                <li>
+                                    <label for="lastname">Achternaam</label>
+                                    <input type="text" id="lastName" name="lastName" class="field-style field-split align-right" />
+                                </li>
+                                <li>
+                                    <label for="address">Adres</label>
+                                    <input type="text" id="address" name="address" class="field-style field-split align-right" />
+                                </li>
+                                <li>
+                                    <label for="zip">Postcode</label>
+                                    <input type="text" id="zip" name="zip" class="field-style field-split align-right" />
+                                </li>
+                                <li>
+                                    <label for="city">Plaatsnaam</label>
+                                    <input type="text" id="city" name="city" class="field-style field-split align-right" />
+                                </li>
+                                <li>
+                                    <label for="country">Land</label>
+                                    <input type="text" id="country" name="country" class="field-style field-split align-right" />
+                                </li>
+                                <li>
+                                    <input type="submit" value="Registreer" />
+                                </li>
 
-                <div class="container_store2">
-                    <form method="POST" action="CreateUserController.php" onsubmit="return validate(this);">
-                        <table>
-                            <tr>
-                                <td>Username:</td>
-                                <td><input type="text" name="username" required></td>
-                            </tr>
-                            <tr>
-                                <td>Password:</td>
-                                <td><input type="password" name="password" required></td>
-                            </tr>
-                            <tr>
-                                <td>Confirm password:</td>
-                                <td><input type="password" name="confirm-password" required></td>
-                            </tr>
-                            <tr>
-                                <td>E-mail:</td>
-                                <td><input type="text" name="email" required></td>
-                            </tr>
-                            <tr>
-                                <td>Phone number:</td>
-                                <td><input type="tel" name="phone"></td>
-                            </tr>
-                            <tr>
-                                <td>Firstname:</td>
-                                <td><input type="text" name="firstName"></td>
-                            </tr>
-                            <tr>
-                                <td>Lastname:</td>
-                                <td><input type="text" name="lastName"></td>
-                            </tr>
-                            <tr>
-                                <td>Address:</td>
-                                <td><input type="text" name="address"></td>
-                            </tr>
-                            <tr>
-                                <td>ZIP:</td>
-                                <td><input type="text" name="zip"></td>
-                            </tr>
-                            <tr>
-                                <td>City:</td>
-                                <td><input type="text" name="city"></td>
-                            </tr>
-                            <tr>
-                                <td>Country:</td>
-                                <td><input type="text" name="country"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><input type="submit" value="Create account"></td>
-                            </tr>
-                        </table>
-                    </form>
+                            </ul>
+                        </form>
+                    </div><!-- form_register -->
                 </div>
                 <!-- container_store2 -->
 

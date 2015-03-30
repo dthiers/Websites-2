@@ -16,8 +16,10 @@ function loadBlog($blog)
             <div id="content">
 
                 <div id="container_blog">
+                    <div id="blog_head">
+                        <h1>Blog</h1>
+                    </div><!-- blog_head -->
                     <div id="content_blog">
-
                        <?
                        foreach($blog as $post)
                        {
@@ -29,12 +31,12 @@ function loadBlog($blog)
                             <div class="blog_item_post">
                                 <div class="clearer"></div><!-- clearer -->
                                 <div class="blog_item_title">
-                                    <h1><?php echo $post->getTitle(); ?></h1>
+                                    <h4><?php echo $post->getTitle(); ?></h4>
                                 </div><!-- blog_item_title -->
                                 <div class="blog_item_text">
                                     <p><?php echo $post->getText(); ?></p>
                                 </div><!-- blog_item_text -->
-
+                            <div class="clearer"></div>
                             </div><!-- blog_item_post -->
                         </div><!-- blog_item -->
 

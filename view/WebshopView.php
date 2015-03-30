@@ -69,11 +69,16 @@
                                 }
                                 else {
                                 ?>
-                                    <a href="AddToShoppingCartController.php?id=<?php echo $productItem->getId(); ?>">Toevoegen aan winkelwagen</a>
+                                    <div class="cart">
+                                        <div class="cart_img">
+                                            <a href="AddToShoppingCartController.php?id=<?php echo $productItem->getId(); ?>"><img src="../images/cart_small25.png" alt="cart" /></a>
+                                        </div><!-- cart_img -->
+                                    </div><!-- cart -->
                                 <?php
                                 }
                                 ?>
                             </div>
+                            <div class="clearer"></div>
                         </div><!-- .item -->
                     <?php
                     }

@@ -62,7 +62,7 @@ function showRegister()
                                     <input type="text" id="country" name="country" class="field-style field-split align-right" />
                                 </li>
                                 <li>
-                                    <input type="submit" value="Registreer" />
+                                    <input type="submit" value="Registreer" class="align-right"/>
                                 </li>
 
                             </ul>

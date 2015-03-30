@@ -14,23 +14,27 @@ function showLogin()
         <div id="main">
             <div id="content">
                 <div class="container_login">
+                    <div id="login_head">
+                        <h1>Login</h1>
+                    </div><!-- login_head -->
                     <div id="login">
-                    <form method="GET" action="CheckLoginController.php">
-                        <table>
-                            <tr>
-                                <td>Username:</td>
-                                <td><input type="text" name="username" required></td>
-                            </tr>
-                            <tr>
-                                <td>Password:</td>
-                                <td><input type="password" name="password" required></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><input type="submit" value="Login"></td>
-                                <td>Nog geen account? Registreer <a href="RegisterController.php">hier</a></td>
-                            </tr>
-                        </table>
+                    <form method="GET" action="CheckLoginController.php" class="form-style">
+                        <ul>
+                            <li>
+                                <label for="username">Gebruikersnaam: </label>
+                                <input type="text" id="username" name="username" class="field-style field-split align-right" required=""/>
+                            </li>
+                            <li>
+                                <label for="password">Wachtwoord: </label>
+                                <input type="password" id="password" name="password" class="field-style field-split align-right" required/>
+                            </li>
+                            <li>
+                                <p class="right">Nog geen account? Registreer <a href="RegisterController.php">hier</a></p>
+                            </li>
+                            <li>
+                                <input type="submit" value="Login" class="align-right" />
+                            </li>
+                        </ul>
                     </form>
                     </div>
                 </div>

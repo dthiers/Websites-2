@@ -139,9 +139,18 @@ body {
     width: 100%;
 }
 
-#login {
+#login_head {
     margin: 0 auto;
-    width: 20%;
+    margin-bottom: 50px;
+    background-color: white;
+    width: 85%;
+    border-bottom: 0.1em solid #c0c0c0;
+}
+
+#login {
+    box-shadow: 0em 0em 1em #888888;
+    margin: 0 auto;
+    width: 50%;
 }
 
 .container_store .container_element {
@@ -152,6 +161,9 @@ body {
     border: 1px solid #dcdcdc;
 }
 
+.right {
+    float: right;
+}
 /* =Store
 -------------------------------------------------------------- */
 
@@ -367,6 +379,7 @@ section.color {
 }
 
 #form_register {
+    box-shadow: 0em 0em 1em #888888;
     margin: 0 auto;
     min-width: 410px;
     width: 50%;

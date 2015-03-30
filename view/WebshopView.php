@@ -6,6 +6,9 @@
 
             <div id="main">
                 <div id="content">
+                    <div id="login_head">
+                        <h1>Webshop</h1>
+                    </div><!-- login_head -->
 
                 <!-- HIER KOMT HET CATEGORIE MENU-->
                 <div id="categories">

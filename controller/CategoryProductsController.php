@@ -8,7 +8,7 @@
 
 include '../model/Database.class.php';
 include '../model/Product.class.php';
-include '../view/indexView.php';
+include '../view/WebshopView.php';
 include '../view/headerView.php';
 include '../model/Navigation.class.php';
 include '../model/Category.class.php';

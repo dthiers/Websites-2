@@ -23,13 +23,12 @@ $zip = $_POST['zip'];
 $city = $_POST['city'];
 $country = $_POST['country'];
 
-$user = new User(null, $username, $password, $email, $phone, $firstName, $lastName, $address, $zip, $city, $country);
+$createUser = User::createUser($username, $password, $email, $phone, $firstName, $lastName, $address, $zip, $city, $country);
 
-$db = Database::getDatabase();
-if ($db->createUser($user)) {
+if ($createUser) {
     echo "U heeft succesvol geregistreerd, u wordt terug gebracht naar de webshop in 5 seconden...";
-    header( "refresh:5;url=../controller/IndexController.php" );
+    header( "refresh:5;url=WebshopController.php" );
 }
 else {
-    header("Location: ../controller/RegisterController.php");
+    header("Location: RegisterController.php");
 }

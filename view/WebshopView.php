@@ -53,7 +53,7 @@
                             </div>
                             <div class="description">
                                 <div class="title">
-                                    <?php echo $productItem->getName(); ?>
+                                    <a href="../controller/ProductController.php?id=<?php echo $productItem->getId(); ?>"><?php echo $productItem->getName(); ?></a>
                                 </div>
                                 <div class="small_description">
                                     <?php echo $productItem->getSmallDescription(); ?>
@@ -62,8 +62,6 @@
                             <div class="price">
                                 <?php echo "€" . $productItem->getPrice(); ?>
                             </div>
-
-                            <a href="../controller/ProductController.php?id=<?php echo $productItem->getId(); ?>">link</a>
                         </div><!-- .item -->
                     <?php
                     }

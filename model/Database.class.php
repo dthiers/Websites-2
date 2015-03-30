@@ -265,10 +265,13 @@ class Database {
     public function checkUser($username, $password) {
         $ret = false;
 
+        $newPassword = $username.$password."salt";
+        $encryptedPassword = sha1($newPassword);
+
         $query = "SELECT * FROM users WHERE Username = ? AND Password = ?";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $username, $password);
+        $stmt->bind_param('ss', $username, $encryptedPassword);
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows > 0) {

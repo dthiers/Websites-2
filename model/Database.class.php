@@ -385,11 +385,44 @@ class Database {
         return $result;
     }
 
-    
+
+    // ------------------- BLOG -------------- //
+    public function getBlog(){
+        $query = "SELECT * FROM blog ORDER BY Id DESC";
+
+        $result = $this->db->query($query);
+
+        return $result;
+    }
+
+    public function createBlog($blog){
+        $return = false;
+
+        $username = $blog->getUsername();
+        $title = $blog->getTitle();
+        $text = $blog->getText();
+
+        $query = "INSERT INTO blog (Username, Title, Text) VALUES (?, ?, ?)";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sss', $username, $title, $text);
+        $stmt->execute() or die($stmt->error);
+        if($stmt->affected_rows > 0){
+            $return = true;
+        }
+        $stmt->close();
+
+        return $return;
+
+    }
+
+
+
     static function getDatabase() {
         if (Database::$instance == null) {
             Database::$instance = new Database();
         }
         return Database::$instance;
     }
+
 }

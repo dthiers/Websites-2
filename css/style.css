@@ -253,6 +253,11 @@ section.color {
     color: white;
 }
 
+#content_container {
+    width: 20%;
+    margin: 0 auto;
+    height: auto;
+}
 
 /* =Header
     De header komt van internet aangezien we een verklein effect wilde

@@ -19,6 +19,5 @@ if (User::checkLogin($username, $password) == "") {
 else {
     session_start();
     $_SESSION['username'] = $username;
-
     header("Location: WebshopController.php");
 }

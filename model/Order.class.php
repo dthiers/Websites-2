@@ -121,4 +121,14 @@ class Order {
     {
         $this->country = $country;
     }
+
+    static function CreateOrder($userId, $paid, $date, $paymentDate, $address, $zip, $city, $country) {
+        $db = Database::getDatabase();
+
+        $order = new Order(null, $userId, $paid, $date, $paymentDate, $address, $zip, $city, $country);
+
+        $bool = $db->createOrder($order);
+
+        return $bool;
+    }
 }

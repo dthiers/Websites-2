@@ -2,10 +2,10 @@
 {
 
     ?>
-    <div id="wrapper">
+        <div id="wrapper">
 
-        <div id="main">
-            <div id="content">
+            <div id="main">
+                <div id="content">
 
                 <!-- HIER KOMT HET CATEGORIE MENU-->
                 <div id="categories">
@@ -61,6 +61,7 @@
                             </div>
                             <div class="price">
                                 <?php echo "€" . $productItem->getPrice(); ?>
+                                <a href="AddToShoppingCartController.php?id=<?php echo $productItem->getId(); ?>">Toevoegen aan winkelwagen</a>
                             </div>
                         </div><!-- .item -->
                     <?php

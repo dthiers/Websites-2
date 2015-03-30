@@ -159,4 +159,26 @@ class User {
 
         return $return;
     }
+
+    static function getUser($username) {
+        $db = Database::getDatabase();
+        $user = $db->getUser($username);
+
+        //local variables
+        $id = $user[0]['UserId'];
+        $username = $user[0]['Username'];
+        $password = $user[0]['Password'];
+        $email = $user[0]['Email'];
+        $phone = $user[0]['Phone'];
+        $firstName = $user[0]['FirstName'];
+        $lastName = $user[0]['LastName'];
+        $address = $user[0]['Address'];
+        $zip = $user[0]['Zip'];
+        $city = $user[0]['City'];
+        $country = $user[0]['Country'];
+
+        $returnUser = new User($id, $username, $password, $email, $phone, $firstName, $lastName, $address, $zip, $city, $country);
+
+        return $returnUser;
+    }
 }

@@ -6,8 +6,12 @@
  * Time: 14:00
  */
 
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
+
 unset($_SESSION['cart']);
+unset($_SESSION['amount']);
 
 include '../model/Database.class.php';
 include '../model/Product.class.php';

@@ -6,8 +6,9 @@
  * Time: 11:53
  */
 
-
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 // check to see if the cart is empty or not, don't overwrite it if it already exists
 if (empty($_SESSION['cart'])) {

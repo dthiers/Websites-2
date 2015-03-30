@@ -27,3 +27,12 @@ function validate(form) {
     return true;
 }
 
+function checkUpload(){
+    var inp = document.getElementById('image');
+    if(inp.files.length === 0){
+        alert("Foto toevoegen alstublieft!");
+        inp.focus();
+
+        return false;
+    }
+}

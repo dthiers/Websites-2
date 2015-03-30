@@ -6,7 +6,9 @@
  * Time: 16:53
  */
 
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 include '../model/Database.class.php';
 include '../view/AdminView.php';

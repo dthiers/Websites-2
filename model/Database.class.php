@@ -388,17 +388,17 @@ class Database {
         }
         $stmt->close();
 
-        $result = $result - 1;
+        $newStock = $result - 1;
 
         //query 2
-        $query2 = "UPDATE product SET Stock = ?";
+        $query2 = "UPDATE product SET Stock = ? WHERE ProductId = ?";
         $stmt2 = $this->db->prepare($query2);
-        $stmt2->bind_param('i', $result);
+        $stmt2->bind_param('ii', $newStock, $productId);
         $stmt2->execute();
         if ($stmt2->affected_rows > 0) {
             $ret = true;
         }
-        $stmt->close();
+        $stmt2->close();
 
         return $ret;
     }

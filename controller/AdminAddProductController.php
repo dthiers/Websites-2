@@ -15,34 +15,37 @@ include '../view/HeaderView.php';
 include '../view/ProductView.php';
 include '../view/FooterView.php';
 
-if(!empty($_POST)){
+if (!empty($_POST)) {
+    $db = Database::getDatabase();
+
     $sku = $_POST['sku'];
     $name = $_POST['name'];
     $small = $_POST['smallDescription'];
     $description = $_POST['description'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
-    $image = $_POST['image'];
 
     $categoryIds = array();
     $categoryIds = $_POST['category'];
 
+    //image
+    $filetmp = $_FILES['image']['tmp_name'];
+    $filename = $_FILES['image']['name'];
+    $filepath = '../images/'.$filename;
 
-    $product = new Product(null, $sku, $name, $small, $description, $price, $stock, $image);
+    move_uploaded_file($filetmp, $filepath);
 
-    // Categories moeten allemaal nog
+    $product = new Product(null, $sku, $name, $small, $description, $price, $stock, $filepath);
 
-    $db = Database::getDatabase();
-    if($db->createProduct($product)){
+
+    if ($db->createProduct($product)) {
         unset($_POST);
         $_POST = array();
 
-        foreach($categoryIds as $categoryId){
+        foreach ($categoryIds as $categoryId) {
             $db->createProductCategory($categoryId);
         }
         header("Location: ../controller/AdminAddProductController.php");
-
-        echo "Product toegevoegd";
     }
 
 }

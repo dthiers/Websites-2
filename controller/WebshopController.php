@@ -14,7 +14,9 @@ include '../model/Navigation.class.php';
 include '../model/Category.class.php';
 include '../view/FooterView.php';
 
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 $allProducts = Product::getAllProductsDescending();
 $categories = Category::getCategories();

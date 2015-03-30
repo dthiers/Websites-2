@@ -6,7 +6,9 @@
  * Time: 23:12
  */
 
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 include '../model/Database.class.php';
 include '../model/Product.class.php';

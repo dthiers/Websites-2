@@ -148,13 +148,13 @@ class Product {
     }
 
     //returns all products of the linked order id
-    public function getProductsFromOrder($orderId) {
+    static function getProductsFromOrder($orderId) {
         //db connection
         $db = Database::getDatabase();
 
         $result = $db->selectProductFromOrder($orderId);
 
-        $products = $this->returnResults($result);
+        $products = Product::returnResults($result);
 
         return $products;
     }

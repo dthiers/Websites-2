@@ -3,29 +3,26 @@
  * Created by PhpStorm.
  * User: Raymond
  * Date: 30-3-2015
- * Time: 14:22
+ * Time: 16:52
  */
 
-function showOrders($orders)
+function showAdministration($administrations, $size)
 {
     ?>
-
     <div id="wrapper">
         <div id="main">
             <div id="content">
 
                 <div id="container_home">
                     <div id="content_home">
-                        <h1>Orders</h1>
+                        <h1>Beheer</h1>
                         <?php
-                        foreach ($orders as $orderItem) {
+                        for ($i = 0; $i < $size; $i++) {
                             ?>
                             <div class="order_container">
                                 <p>
-                                    <?php echo "<p>Order id: " . $orderItem->getId() . "</p>"; ?>
-                                    <?php echo "<p>" . $orderItem->getAddress() . " " . $orderItem->getZip() . "</p>"; ?>
-                                    <?php echo "<p>" . $orderItem->getCity() . " " . $orderItem->getCountry() . "</p>"; ?>
-                                    <a href="OrderProductController.php?id=<?php echo $orderItem->getId(); ?>" class="fill_order_container"></a>
+                                    <?php echo "<p>" . $administrations[$i] . " Beheer </p>"; ?>
+                                    <!--<a href="#" class="fill_order_container"></a>-->
                                 </p>
                             </div>
                         <?php

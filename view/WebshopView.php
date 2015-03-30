@@ -3,11 +3,12 @@
 
     ?>
     <div id="wrapper">
-            <div id="main">
-                <div id="content">
-                    <div id="login_head">
-                        <h1>Webshop</h1>
-                    </div><!-- login_head -->
+        <div id="main">
+            <div id="content">
+                <div id="login_head">
+                    <h1>Webshop</h1>
+                </div>
+                <!-- login_head -->
 
                 <!-- HIER KOMT HET CATEGORIE MENU-->
                 <div id="categories">
@@ -103,6 +104,58 @@
         <div class="push"></div>
 
     </div><!-- /#wrapper -->
+<?php
+}
+
+
+function showProductsOrder($products)
+{
+    $totaalPrijs = 0;
+    ?>
+    <div id="wrapper">
+        <div id="main">
+            <div id="content">
+
+                <div id="container_home">
+                    <div id="content_home">
+                        <h1>Producten in order</h1>
+                        <?php
+                        foreach ($products as $productItem) {
+                            ?>
+                            <div class="order_container">
+                                <p>
+                                    <?php echo "<p>" . $productItem->getName() . "</p>"; ?>
+                                    <?php echo "<p>" . $productItem->getSmallDescription() . " €" . $productItem->getPrice() . "</p>"; ?>
+                                    <?php $totaalPrijs += $productItem->getPrice(); ?>
+                                    <!--<a href="#" class="fill_order_container"></a>-->
+                                </p>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                        <div class="order_container">
+                            <p>
+                                Totaalprijs: €<?php echo $totaalPrijs; ?>
+                                <!--<a href="#" class="fill_order_container"></a>-->
+                            </p>
+                        </div>
+                    </div>
+                    <!-- content_home -->
+                </div>
+                <!-- container_home -->
+
+            </div>
+            <!-- content -->
+            <div class="clearer"></div>
+            <!-- clearer -->
+
+        </div>
+        <!-- main -->
+        <div class="clearer"></div>
+        <!-- clearer -->
+        <div class="push"></div>
+        <!-- push -->
+    </div><!-- wrapper -->
 <?php
 }
 

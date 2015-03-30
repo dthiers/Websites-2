@@ -81,7 +81,7 @@ class Database {
         $query = "SELECT * FROM product AS p JOIN orders_has_product AS o ON p.ProductId = o.Product_ProductId WHERE o.Orders_OrderId = ?";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $categoryId);
+        $stmt->bind_param('i', $orderId);
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($productId, $sku, $name, $smallDescription, $description, $price, $stock, $imageURL, $x, $orderId);
@@ -95,10 +95,10 @@ class Database {
                 "Description" => $description,
                 "Price" => $price,
                 "Stock" => $stock,
-                "ImageURL" => $imageURL,
-                "CategoryId" => $orderId
+                "ImageURL" => $imageURL
             ];
         }
+        $stmt->close();
 
         return $result;
     }

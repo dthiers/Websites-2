@@ -15,7 +15,6 @@ if (empty($_SESSION['cart'])) {
 
 array_push($_SESSION['cart'], $_GET['id']);
 
-?>
-<p>
-    Product is toegevoegd aan uw winkelwagen!
-</p>
+$_SESSION['amount'] += 1;
+
+header("Location: WebshopController.php");

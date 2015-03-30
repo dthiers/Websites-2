@@ -16,6 +16,18 @@ class Product {
     private $description;
     private $price;
     private $stock;
+    private $img;
+
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+
+    public function setImg($img)
+    {
+        $this->img = $img;
+    }
 
     // Getters
     public function getId() {
@@ -77,7 +89,7 @@ class Product {
     }
 
     //Constructor
-    public function __construct($id, $SKU, $name, $smallDescription, $description, $price, $stock) {
+    public function __construct($id, $SKU, $name, $smallDescription, $description, $price, $stock, $img) {
         $this->setId($id);
         $this->setSKU($SKU);
         $this->setName($name);
@@ -85,6 +97,7 @@ class Product {
         $this->setDescription($description);
         $this->setPrice($price);
         $this->setStock($stock);
+        $this->setImg($img);
     }
 
     // ------------------------------------ READ ------------------------------------------ //
@@ -105,8 +118,9 @@ class Product {
             $description = $row['Description'];
             $price = $row['Price'];
             $stock = $row['Stock'];
+            $img = $row['ImageURL'];
 
-            $product = new Product($id, $sku, $name, $small_description, $description, $price, $stock);
+            $product = new Product($id, $sku, $name, $small_description, $description, $price, $stock, $img);
 
             $products[] = $product;
         };
@@ -140,9 +154,10 @@ class Product {
         $description = $result[0]['Description'];
         $price = $result[0]['Price'];
         $stock = $result[0]['Stock'];
+        $img = $result[0]['ImageURL'];
 
         //set product
-        $product = new Product($id, $sku, $name, $smallDescription,$description, $price, $stock);
+        $product = new Product($id, $sku, $name, $smallDescription,$description, $price, $stock, $img);
 
         return $product;
     }
@@ -173,8 +188,9 @@ class Product {
             $description = $item['Description'];
             $price = $item['Price'];
             $stock = $item['Stock'];
+            $img = $item['ImageURL'];
 
-            $product = new Product($productId, $sku, $name, $smallDescription,$description, $price, $stock);
+            $product = new Product($productId, $sku, $name, $smallDescription,$description, $price, $stock, $img);
 
             //add products to the array
             $products[] = $product;
@@ -184,8 +200,8 @@ class Product {
     }
 
     // -------------------------------------- CREATE ---------------------------- //
-    public function createProduct($sku, $name, $smallDescription,$description, $price, $stock, $categoryId) {
-        $product = new Product(null, $sku, $name, $smallDescription, $description, $price, $stock);
+    public function createProduct($sku, $name, $smallDescription,$description, $price, $stock, $categoryId, $img) {
+        $product = new Product(null, $sku, $name, $smallDescription, $description, $price, $stock, $img);
 
         //db connection
         $db = Database::getDatabase();
@@ -196,8 +212,8 @@ class Product {
     }
 
     // -------------------------------------- UPDATE --------------------------- //
-    public function updateProduct($productId, $sku, $name, $smallDescription,$description, $price, $stock, $categoryId) {
-        $product = new Product($productId, $sku, $name, $smallDescription,$description, $price, $stock);
+    public function updateProduct($productId, $sku, $name, $smallDescription,$description, $price, $stock, $categoryId, $img) {
+        $product = new Product($productId, $sku, $name, $smallDescription,$description, $price, $stock, $img);
 
         //db connection
         $db = Database::getDatabase();

@@ -133,7 +133,7 @@ class Database {
     // --------------------- CREATE PRODUCT ------------------- //
     public function createProduct($product) {
         //query
-        $query = "INSERT INTO product (SKU, Name, Small_Description, Description, Price, Stock) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO product (SKU, Name, Small_Description, Description, Price, Stock, ImageURL) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         //local variables
         $return = false;
@@ -144,10 +144,11 @@ class Database {
         $description = $product->getDescription();
         $price = $product->getPrice();
         $stock = $product->getStock();
+        $img = $product->getImg();
 
         $stmt = $this->db->prepare($query) or die( $this->db->error);
 
-        $stmt->bind_param('ssssdi', $SKU, $name, $smallDescription, $description, $price, $stock);
+        $stmt->bind_param('ssssdis', $SKU, $name, $smallDescription, $description, $price, $stock, $img);
         $stmt->execute() or die ( $this->db->error);
 
         if($stmt->affected_rows == 1){
@@ -207,9 +208,10 @@ class Database {
         $description = $product->getDescription();
         $price = $product->getPrice();
         $stock = $product->getStock();
+        $img = $product->getImg();
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssdii', $SKU, $name, $smallDescription, $description, $price, $stock, $id);
+        $stmt->bind_param('ssssdisi', $SKU, $name, $smallDescription, $description, $price, $stock, $img, $id);
         $stmt->execute();
 
         if ($stmt->affected_rows == 1) {

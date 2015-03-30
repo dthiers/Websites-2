@@ -596,3 +596,93 @@ a.fill_order_container {
 .order_container:hover {
     background-color: #4f5b66;
 }
+
+
+/* =Forms
+-------------------------------------------------------------- */
+#basic_info{
+    width: 60%;
+    float: left;
+}
+
+#product_img {
+    text-align: center;
+    vertical-align: middle;
+    height: 200px;
+    width: 39%;
+    float: left;
+    border: 0.1em solid #c0c0c0;
+}
+
+#product_description {
+    display: block;
+    width: 100%;
+}
+#product_description p {
+    margin: 10px;
+}
+
+#product_description h1 {
+    margin: 10px;
+}
+
+#product_details {
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-top: 0.1em solid #c0c0c0;
+}
+
+#product_price, #product_stock {
+    display: block;
+    float: right;
+    height: inherit;
+
+    margin: 5px 10px 0 10px;
+    font-size: 20px;
+}
+
+#product_price {
+    font-weight: bold;
+    font-size: 22px !important;
+}
+
+#product_details input[type='submit']{
+    margin: 30px 0 5px 0;
+    float:right;
+}
+
+#productinfo {
+    border-collapse: separate;
+    border-spacing: 10px 5px;
+}
+
+.left_label, #product_description h1 {
+    font-weight: lighter;
+    color: #1799b1;
+    font-size: 18px !important;
+}
+
+.right_label {
+    width: 100%;
+    border-bottom: 0.1em solid #c0c0c0;
+    font-size: 16px !important;
+}
+
+
+
+/*------------------ Global stuff ------------------*/
+input[type="button"],
+input[type="submit"] {
+    background-color: #1799b1;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    padding: 8px 18px;
+    text-decoration: none;
+    font: inherit;
+}
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    background-color: #158A9F;
+}

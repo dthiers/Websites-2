@@ -12,7 +12,9 @@ function showProductDetails($categories, $product)
     <div id="wrapper">
         <div id="main">
             <div id="content">
-
+                <div id="login_head">
+                    <h1><?php echo $product->getName(); ?></h1>
+                </div>
                 <!-- CATEGORY MENU -->
                 <div id="categories">
                     <h1>Categories</h1>
@@ -48,16 +50,45 @@ function showProductDetails($categories, $product)
                 </div><!-- categories -->
 
                 <div class="container_store2">
-                    <?php
-                    // get all info from product
-                    echo 'id = '.$product->getId().'<br>';
-                    echo 'sku = '.$product->getSKU().'<br>';
-                    echo 'name = '.$product->getName().'<br>';
-                    echo 'small description = '.$product->getSmallDescription().'<br>';
-                    echo 'description = '.$product->getDescription().'<br>';
-                    echo 'price = '.$product->getPrice().'<br>';
-                    echo 'stock = '.$product->getStock().'<br>';
-                    ?>
+
+                    <div id="basic_info">
+                        <table id="productinfo">
+                            <tr>
+                                <td class="left_label">SKU</td>
+                                <td class="right_label"><?php echo $product->getSKU(); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="left_label">Beschrijving</td>
+                                <td class="right_label"><?php echo $product->getSmallDescription(); ?></td>
+                            </tr>
+                        </table>
+                    </div><!-- basic_info -->
+
+                    <div id="product_img">
+                        <p><?php echo $product->getImg(); ?></p>
+                    </div><!-- product_img -->
+                    <div class="clearer"></div><!-- clearer -->
+
+                    <div id="product_description">
+                        <h1>Beschrijving:</h1>
+                        <p><?php echo $product->getDescription(); ?></p>
+                    </div><!-- product_description -->
+
+                    <div id="product_details">
+                        <div id="product_price">
+                            <?php echo '$'.$product->getPrice(); ?>
+                        </div><!-- product_price -->
+                        <div id="product_stock">
+                            <?php echo $product->getStock().' in stock'; ?>
+                        </div><!-- product_stock -->
+                    </div><!-- product_details -->
+                    <div class="clearer"></div><!-- clearer -->
+                    <div id="product_details">
+                        <form action="../controller/AddToShoppingCartController.php?id=<?php echo $product->getId();?>">
+                            <input type="submit" value="Voeg toe aan winkelwagen" />
+                        </form>
+                    </div><!-- product_details -->
+
                 </div><!-- container_store2 -->
 
             </div><!-- content -->

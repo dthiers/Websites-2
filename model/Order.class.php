@@ -121,4 +121,43 @@ class Order {
     {
         $this->country = $country;
     }
+
+    static function createOrder($userId, $paid, $date, $paymentDate, $address, $zip, $city, $country, $orderedProducts) {
+        $db = Database::getDatabase();
+
+        $order = new Order(null, $userId, $paid, $date, $paymentDate, $address, $zip, $city, $country);
+        $bool = $db->createOrder($userId, $order);
+        foreach ($orderedProducts as $productItem) {
+            $db->createProductOrder($productItem->getId());
+        }
+
+        return $bool;
+    }
+
+    // get all orders from a user
+    static function getAllOrders($userId) {
+        $db = Database::getDatabase();
+
+        $orders = array();
+
+        foreach ($db->getAllOrders($userId) as $item) {
+            //local
+            $orderId = $item['OrderId'];
+            $userId = $item['Users_UserId'];
+            $paid = $item['Paid'];
+            $date = $item['Date'];
+            $paymentDate = $item['PaymentDate'];
+            $address = $item['Address'];
+            $zip = $item['Zip'];
+            $city = $item['City'];
+            $country = $item['Country'];
+
+            $order = new Order($orderId, $userId, $paid, $date, $paymentDate, $address, $zip, $city, $country);
+
+            //add orders to the array
+            $orders[] = $order;
+        }
+
+        return $orders;
+    }
 }

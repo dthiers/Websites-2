@@ -28,6 +28,7 @@ html {
 body {
     height: 100%;
     line-height: 1;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -132,6 +133,15 @@ body {
 .container_store2 {
     float: left;
     width: 65%;
+}
+
+.container_login {
+    width: 100%;
+}
+
+#login {
+    margin: 0 auto;
+    width: 20%;
 }
 
 .container_store .container_element {
@@ -242,6 +252,11 @@ section.color {
     color: white;
 }
 
+#content_container {
+    width: 20%;
+    margin: 0 auto;
+    height: auto;
+}
 
 /* = Homepage
 -------------------------------------------------------------- */
@@ -429,6 +444,20 @@ header.smaller nav a {
     line-height: 75px;
 }
 
+.nav_user {
+    text-decoration: none;
+    line-height: 150px;
+    margin: 0 10px 0 10px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 18px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
 /* =Footer
 -------------------------------------------------------------- */
 footer {
@@ -451,6 +480,7 @@ footer, .push {
     margin: 0 auto;
 }
 
+<<<<<<< HEAD
 
 
 
@@ -533,3 +563,5 @@ input[type="tel"],
 textarea{
     font: inherit;
 }
+=======
+>>>>>>> master

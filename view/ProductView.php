@@ -24,7 +24,7 @@ function showProductDetails($categories, $product)
                             if ($categoryItem->getParent() == 0) { ?>
                                 <input id="<?php echo "input" . $counter; ?>" type="checkbox" class="main_category">
                                 <li>
-                                <a class="main" href="#"><?php echo $categoryItem->getName(); ?></a>
+                                <a class="main" href="CategoryProductsController.php?id=<?php echo $categoryItem->getId(); ?>"><?php echo $categoryItem->getName(); ?></a>
                                 <label for="<?php echo "input" . $counter; ?>"><?php //echo $categoryItem->getName(); ?>
                                     ></label>
                             <?php
@@ -34,7 +34,7 @@ function showProductDetails($categories, $product)
                                 foreach ($categories as $item) {
                                     if ($categoryItem->getId() == $item->getParent()) {
                                         ?>
-                                        <li><a href="#"><?php echo $item->getName(); ?></a></li>
+                                        <li><a href="CategoryProductsController.php?id=<?php echo $item->getId(); ?>"><?php echo $item->getName(); ?></a></li>
                                     <?php
                                     }
                                 }?>

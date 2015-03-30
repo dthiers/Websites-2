@@ -2,10 +2,10 @@
 {
 
     ?>
-    <div id="wrapper">
+        <div id="wrapper">
 
-        <div id="main">
-            <div id="content">
+            <div id="main">
+                <div id="content">
 
                 <!-- HIER KOMT HET CATEGORIE MENU-->
                 <div id="categories">
@@ -53,7 +53,7 @@
                             </div>
                             <div class="description">
                                 <div class="title">
-                                    <?php echo $productItem->getName(); ?>
+                                    <a href="../controller/ProductController.php?id=<?php echo $productItem->getId(); ?>"><?php echo $productItem->getName(); ?></a>
                                 </div>
                                 <div class="small_description">
                                     <?php echo $productItem->getSmallDescription(); ?>
@@ -61,9 +61,8 @@
                             </div>
                             <div class="price">
                                 <?php echo "€" . $productItem->getPrice(); ?>
+                                <a href="AddToShoppingCartController.php?id=<?php echo $productItem->getId(); ?>">Toevoegen aan winkelwagen</a>
                             </div>
-
-                            <a href="../controller/ProductController.php?id=<?php echo $productItem->getId(); ?>">link</a>
                         </div><!-- .item -->
                     <?php
                     }

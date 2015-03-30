@@ -16,7 +16,7 @@ if(isset($_SESSION['username'])) {
     <!-- title and meta -->
     <meta charset="utf-8" />
 
-    <title>Test</title>
+    <title>Webshop</title>
 
     <link rel="stylesheet" href="../css/style.css" />
 </head>

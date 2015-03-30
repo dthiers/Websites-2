@@ -161,7 +161,7 @@ class Database {
     // ----------------- GET LAST PRODUCT ID ------------- //
     private function getLastProductId() {
         //query
-        $query = "SELECT ProductId FROM product ORDER BY desc LIMIT 1";
+        $query = "SELECT ProductId FROM product ORDER BY ProductId desc LIMIT 1";
         $result = $this->db->query($query);
         while ($row = $result->fetch_assoc()) {
             $id = $row['ProductId'];
@@ -336,6 +336,69 @@ class Database {
         $stmt->close();
 
         return $ret;
+    }
+
+    // ----------------- GET LAST ORDER ID ------------- //
+    private function getLastOrderId() {
+        //query
+        $query = "SELECT OrderId FROM orders ORDER BY OrderId desc LIMIT 1";
+        $result = $this->db->query($query);
+        while ($row = $result->fetch_assoc()) {
+            $id = $row['OrderId'];
+        }
+
+        return $id;
+    }
+
+
+    // ------------------- INSERT PRODUCTIDS + ORDERID ------------ //
+    public function createProductOrder($productId) {
+        $query = "INSERT INTO `orders_has_product` (`Orders_OrderId`, `Product_ProductId`) VALUES (?, ?)";
+
+        //local variables
+        $ret = false;
+        $orderId = $this->getLastOrderId();
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $orderId, $productId);
+        $stmt->execute();
+
+        if ($stmt->affected_rows == 1) {
+            $ret = true;
+        }
+        $stmt->close();
+
+        return $ret;
+    }
+
+    // ------------------ GET ALL ORDERS FROM USER ---------------- //
+    public function getAllOrders($userId) {
+        $query = "SELECT * FROM orders WHERE `Users_UserId` = ?";
+
+        // local
+        $ret = false;
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($orderId, $userId, $paid, $date, $paymentDate, $address, $zip, $city, $country);
+
+        while ($stmt->fetch()) {
+            $result[] = [
+                "OrderId" => $orderId,
+                "Users_UserId" => $userId,
+                "Paid" => $paid,
+                "Date" => $date,
+                "PaymentDate" => $paymentDate,
+                "Address" => $address,
+                "Zip" => $zip,
+                "City" => $city,
+                "Country" => $country
+            ];
+        }
+        $stmt->close();
+
+        return $result;
     }
 
     // ------------------- USER CREATE ------------ //

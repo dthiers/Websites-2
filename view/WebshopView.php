@@ -61,8 +61,13 @@
                             </div>
                             <div class="price">
                                 <?php echo "€" . $productItem->getPrice(); ?>
-                                <a href="AddToShoppingCartController.php?id=<?php echo $productItem->getId(); ?>">Toevoegen aan winkelwagen</a>
                             </div>
+                            <div class="cart">
+                                <div class="cart_img">
+                                    <a href="AddToShoppingCartController.php?id=<?php echo $productItem->getId(); ?>"><img src="../images/cart_small25.png" alt="cart" /></a>
+                                </div><!-- cart_img -->
+                            </div><!-- cart -->
+                            <div class="clearer"></div>
                         </div><!-- .item -->
                     <?php
                     }

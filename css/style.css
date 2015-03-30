@@ -188,7 +188,7 @@ body {
 
 .description {
     float: left;
-    width: 68%;
+    width: 60%;
     height: 80px;
     padding-top: 10px;
     padding-left: 10px;
@@ -210,6 +210,17 @@ body {
     width: 15%;
     height: 80px;
     right: 0;
+}
+.cart {
+    float: left;
+    width: 5%;
+}
+.cart_img {
+    margin-top: 35px;
+    text-align: center;
+}
+.cart_img img {
+
 }
 .image, .price {
     padding-top: 10px;

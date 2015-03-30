@@ -47,12 +47,6 @@ a img {
     border: none;
 }
 
-label {
-    display: inline;
-    float: right;
-    margin-right: 60%;
-}
-
 .main {
     display: inline !important;
 }
@@ -158,6 +152,8 @@ body {
     border: 1px solid #dcdcdc;
 }
 
+/* =Store
+-------------------------------------------------------------- */
 
 .container_element {
     display: inline-block;
@@ -222,6 +218,9 @@ body {
     line-height: 80px;
 }
 
+/* = Categories
+-------------------------------------------------------------- */
+
 #categories {
     float: left;
     width: 23%;
@@ -257,6 +256,115 @@ section.color {
     width: 20%;
     margin: 0 auto;
     height: auto;
+}
+
+/* = Homepage
+-------------------------------------------------------------- */
+
+#container_home {
+    width: 100%;
+}
+
+#content_home {
+    margin: 0 auto;
+    width: 60%;
+    height: 100%;
+    min-height: 400px;
+    border-top: 0.1em solid #c0c0c0;
+    border-bottom: 0.1em solid #c0c0c0;
+}
+
+#content_home h1 {
+    text-align: center;
+}
+
+/* =Blog
+-------------------------------------------------------------- */
+#container_blog {
+    width: 100%;
+}
+
+#blog_head {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    background-color: white;
+    width: 85%;
+    border-bottom: 0.1em solid #c0c0c0;
+}
+
+#content_blog {
+    margin: 0 auto;
+    width: 85%;
+}
+
+#new_blog {
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 85%;
+    box-shadow: 0em 0em 1em #888888;
+}
+
+#new_blog h1 {
+    text-align: center;
+}
+
+#new_blog form {
+
+
+}
+
+.blog_item {
+    margin: 5px;
+    width: 100%;
+    min-width: 450px;
+    min-height: 100px;
+    border-bottom: 0.1em solid #c0c0c0;
+    float: right;
+}
+.blog_item:hover {
+    box-shadow: 0em 0em 1em #888888;
+    border: none;
+}
+
+.blog_item_user {
+    float: left;
+    width: 15%;
+}
+
+.blog_item_post {
+    float: left;
+    width: 75%;
+}
+
+.blog_item_title {
+    height: 20%;
+}
+
+.blog_item_text {
+
+}
+
+.blog_item_user, .blog_item_text {
+    margin: 10px 0 0 10px;
+}
+
+
+/* = Register
+-------------------------------------------------------------- */
+#container_register {
+    width: 100%;
+}
+
+#form_register {
+    margin: 0 auto;
+    min-width: 410px;
+    width: 50%;
+}
+
+#form_register_head {
+    margin: 0 auto;
+    width: 85%;
+    border-bottom: 0.1em solid #c0c0c0;
 }
 
 /* =Header
@@ -372,3 +480,88 @@ footer, .push {
     margin: 0 auto;
 }
 
+<<<<<<< HEAD
+
+
+
+
+/* =Forms
+-------------------------------------------------------------- */
+.form-style {
+    font: inherit;
+    width: 80%;
+    padding: 30px;
+    margin: 50px auto;
+}
+
+.form-style ul{
+    padding:0;
+    margin:0;
+    list-style:none;
+}
+.form-style ul li{
+    display: block;
+    margin-bottom: 20px;
+    min-height: 35px;
+}
+.form-style ul li  .field-style{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 8px;
+    outline: none;
+    border: 1px solid #B0CFE0;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+
+}.form-style ul li  .field-style:focus{
+     box-shadow: 0 0 5px #B0CFE0;
+     border:1px solid #B0CFE0;
+ }
+.form-style ul li .field-split{
+    width: 49%;
+}
+.form-style ul li .field-full{
+    width: 100%;
+}
+.form-style ul li input.align-left{
+    float:left;
+}
+.form-style ul li input.align-right{
+    float:right;
+}
+.form-style ul li textarea{
+    width: 100%;
+    height: 100px;
+}
+.form-style ul li input[type="button"],
+.form-style ul li input[type="submit"] {
+    background-color: #1799b1;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    padding: 8px 18px;
+    text-decoration: none;
+    font: inherit;
+}
+.form-style ul li input[type="button"]:hover,
+.form-style ul li input[type="submit"]:hover {
+    background-color: #158A9F;
+}
+
+.form-style ul li label {
+    width: 49%;
+    float: left;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea{
+    font: inherit;
+}
+=======
+>>>>>>> master

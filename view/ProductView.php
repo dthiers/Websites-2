@@ -124,7 +124,7 @@ function addProduct($categories){
                     </div><!-- form_register_head -->
                     <div id="form_register">
 
-                        <form class="form-style" method="POST" action="AdminAddProductController.php">
+                        <form class="form-style" method="POST" action="AdminAddProductController.php" enctype="multipart/form-data" onsubmit="return(checkUpload(this));">
 
                             <ul>
                                 <li>
@@ -152,8 +152,8 @@ function addProduct($categories){
                                     <input type="number" id="stock" name="stock" class="field-style field-split align-right" required/>
                                 </li>
                                 <li>
-                                    <label for="img">Afbeelding: </label>
-                                    <input type="text" id="image" name="image" class="field-style field-split align-right" />
+                                    <label for="image">Afbeelding: </label>
+                                    <input type="file" id="image" name="image" accept="image/* class="field-style field-split align-right">
                                 </li>
                                 <li>
                                     <label for="category">Categorien: </label>

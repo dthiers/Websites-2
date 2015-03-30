@@ -611,7 +611,7 @@ a.fill_order_container {
     height: 200px;
     width: 39%;
     float: left;
-    border: 0.1em solid #c0c0c0;
+    //border: 0.1em solid #c0c0c0;
 }
 
 #product_description {

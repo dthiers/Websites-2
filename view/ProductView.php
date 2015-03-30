@@ -65,7 +65,7 @@ function showProductDetails($categories, $product)
                     </div><!-- basic_info -->
 
                     <div id="product_img">
-                        <p><?php echo $product->getImg(); ?></p>
+                        <img src=<?php echo "../images/" . (rand(1, 5)) . ".jpg"; ?>>
                     </div><!-- product_img -->
                     <div class="clearer"></div><!-- clearer -->
 

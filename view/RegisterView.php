@@ -14,7 +14,7 @@ function showRegister()
                     </div><!-- form_register_head -->
                     <div id="form_register">
 
-                        <form class="form-style" method="POST" action="CreateUserController.php" onsubmit="return validate(this);">
+                        <form class="form-style" method="POST" action="RegisterController.php" onsubmit="return validate(this);">
 
                             <ul>
                                 <li>

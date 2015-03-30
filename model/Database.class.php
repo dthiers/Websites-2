@@ -371,6 +371,35 @@ class Database {
         return $ret;
     }
 
+    public function updateProductStock($productId) {
+        $query = "SELECT stock FROM product WHERE ProductId = ?";
+
+        //local
+        $ret = false;
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $productId);
+        $stmt->execute();
+        $stmt->bind_result($stock);
+        while ($stmt->fetch()) {
+            $result = $stock;
+        }
+        $stmt->close();
+
+        $result = $result - 1;
+
+        //query 2
+        $query2 = "UPDATE product SET Stock = ?";
+        $stmt2 = $this->db->prepare($query2);
+        $stmt2->bind_param('i', $result);
+        $stmt2->execute();
+        if ($stmt2->affected_rows > 0) {
+            $ret = true;
+        }
+        $stmt->close();
+
+        return $ret;
+    }
+
     // ------------------ GET ALL ORDERS FROM USER ---------------- //
     public function getAllOrders($userId) {
         $query = "SELECT * FROM orders WHERE `Users_UserId` = ?";

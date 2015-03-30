@@ -20,7 +20,7 @@ function loadBlog($blog)
                         <h1>Blog</h1>
                     </div><!-- blog_head -->
                     <div id="content_blog">
-                       <?
+                       <?php
                        foreach($blog as $post)
                        {
                            ?>

@@ -61,7 +61,18 @@
                             </div>
                             <div class="price">
                                 <?php echo "€" . $productItem->getPrice(); ?>
-                                <a href="AddToShoppingCartController.php?id=<?php echo $productItem->getId(); ?>">Toevoegen aan winkelwagen</a>
+                                <?php
+                                if ($productItem->getStock() == 0) {
+                                ?>
+                                    <p>Out of stock</p>
+                                <?php
+                                }
+                                else {
+                                ?>
+                                    <a href="AddToShoppingCartController.php?id=<?php echo $productItem->getId(); ?>">Toevoegen aan winkelwagen</a>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div><!-- .item -->
                     <?php

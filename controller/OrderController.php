@@ -7,12 +7,15 @@
  */
 
 session_start();
+unset($_SESSION['cart']);
 
 include '../model/Database.class.php';
 include '../model/Product.class.php';
 include '../model/Order.class.php';
+include '../model/User.class.php';
 //include '../view/WebshopView.php';
 include '../view/headerView.php';
+include '../view/OrdersView.php';
 include '../model/Navigation.class.php';
 include '../view/footerView.php';
 

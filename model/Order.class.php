@@ -129,6 +129,7 @@ class Order {
         $bool = $db->createOrder($userId, $order);
         foreach ($orderedProducts as $productItem) {
             $db->createProductOrder($productItem->getId());
+            $db->updateProductStock($productItem->getId());
         }
 
         return $bool;

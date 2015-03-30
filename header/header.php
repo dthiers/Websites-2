@@ -51,8 +51,8 @@ if(isset($_SESSION['username'])) {
             <div class="nav_item">
                 <a href="LogoutController.php">Uitloggen</a>
             </div>
-            <div class="nav_item nav_user">
-                <?php echo $username; ?>
+            <div class="nav_item">
+                <a href="OrderController.php"><?php echo $username; ?></a>
             </div>
             <?php
             }

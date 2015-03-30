@@ -69,7 +69,7 @@
                                 <?php echo "€" . $productItem->getPrice(); ?>
                             </div>
                             <?php
-                            if ($productItem->getStock() == 0) {
+                            if ($productItem->getStock() <= 0) {
                                 ?>
                                 <div class="cart_img">
                                     <p>Out of stock</p>

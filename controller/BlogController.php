@@ -6,6 +6,8 @@
  * Time: 11:13
  */
 
+session_start();
+
 include '../model/Database.class.php';
 include '../model/Blog.class.php';
 include '../view/blogView.php';

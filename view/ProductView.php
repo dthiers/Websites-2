@@ -84,9 +84,9 @@ function showProductDetails($categories, $product)
                     </div><!-- product_details -->
                     <div class="clearer"></div><!-- clearer -->
                     <div id="product_details">
-                        <form action="../controller/AddToShoppingCartController.php?id=<?php echo $product->getId();?>">
-                            <input type="submit" value="Voeg toe aan winkelwagen" />
-                        </form>
+                        <a href="AddToShoppingCartController.php?id=<?php echo $product->getId();?>">
+                            Voeg toe aan winkelwagen
+                        </a>
                     </div><!-- product_details -->
 
                 </div><!-- container_store2 -->

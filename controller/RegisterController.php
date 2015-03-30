@@ -14,6 +14,7 @@ include '../view/headerView.php';
 include '../model/Navigation.class.php';
 include '../view/footerView.php';
 
+session_start();
 
 if(!empty($_POST)){
     $username = $_POST['username'];

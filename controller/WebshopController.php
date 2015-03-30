@@ -14,6 +14,8 @@ include '../model/Navigation.class.php';
 include '../model/Category.class.php';
 include '../view/footerView.php';
 
+session_start();
+
 $allProducts = Product::getAllProductsDescending();
 $categories = Category::getCategories();
 

@@ -6,6 +6,8 @@
  * Time: 23:12
  */
 
+session_start();
+
 include '../model/Database.class.php';
 include '../model/Product.class.php';
 include '../view/WebshopView.php';

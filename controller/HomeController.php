@@ -6,6 +6,8 @@
  * Time: 10:23
  */
 
+session_start();
+
 include '../model/Database.class.php';
 
 include '../view/headerView.php';

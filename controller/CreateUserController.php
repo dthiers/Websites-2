@@ -6,6 +6,8 @@
  * Time: 16:02
  */
 
+session_start();
+
 include '../model/Database.class.php';
 include '../model/User.class.php';
 include '../view/RegisterView.php';

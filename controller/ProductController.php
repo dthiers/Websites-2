@@ -5,6 +5,9 @@
  * Date: 25/03/15
  * Time: 17:14
  */
+
+session_start();
+
 include '../model/Database.class.php';
 include '../model/Product.class.php';
 include '../view/ProductView.php';

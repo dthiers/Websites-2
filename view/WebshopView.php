@@ -59,7 +59,7 @@
                         ?>
                         <div class="item">
                             <div class="image">
-                                <img src=<?php echo "../images/" . (rand(1, 5)) . ".jpg"; ?>>
+                                <img src=<?php echo $productItem->getImg(); ?>>
                             </div>
                             <div class="description">
                                 <div class="title">

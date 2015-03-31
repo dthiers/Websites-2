@@ -208,7 +208,7 @@ function editProduct($categories, $product){
                     </div><!-- form_register_head -->
                     <div id="form_register">
 
-                        <form class="form-style" method="POST" action="AdminEditProductController.php">
+                        <form class="form-style" method="POST" action="AdminEditProductController.php" enctype="multipart/form-data">
 
                             <ul>
                                 <li>
@@ -245,13 +245,12 @@ function editProduct($categories, $product){
                                            value="<?php echo $product->getStock(); ?>" required/>
                                 </li>
                                 <li>
-                                    <label for="img">Afbeelding: </label>
-                                    <input type="text" id="image" name="image" class="field-style field-split align-right"
-                                        value="<?php echo $product->getImg(); ?>"/>
+                                    <label for="image">Afbeelding: </label>
+                                    <input type="file" id="image" name="image" accept="image/* class="field-style field-split align-right">
                                 </li>
                                 <li>
                                     <label for="category">Categorien: </label>
-                                    <select name="category[]" multiple>
+                                    <select name="category">
                                         <?php
                                         foreach($categories as $category)
                                         {
@@ -260,6 +259,7 @@ function editProduct($categories, $product){
                                         <?php
                                         }
                                         ?>
+                                        <option value="0" selected="selected">...</option>
                                     </select>
                                 </li>
                                 <li>

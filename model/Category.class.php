@@ -40,6 +40,21 @@ class Category
         return $categories;
     }
 
+    static function getCategory($categoryId) {
+        $db = Database::getDatabase();
+
+        $result = $db->getCategory($categoryId);
+
+        //localvariables
+        $id = $result[0]['CategoryId'];
+        $name = $result[0]['Name'];
+        $parent = $result[0]['ParentId'];
+
+        //create category object
+        $category = new Category($id, $name, $parent);
+
+        return $category;
+    }
 
     //Getters
     public function getId()

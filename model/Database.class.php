@@ -195,12 +195,11 @@ class Database {
 
     // --------------------- UPDATE PRODUCT ------------------- //
     public function updateProduct($product) {
-        var_dump($product);
         //query
         $query = "UPDATE product SET SKU=?, Name=?, Small_Description=?, Description=?, Price=?, Stock=?, ImageURL=? WHERE ProductId=?";
 
         //local variables
-        $ret = false;
+        $ret = true;
 
         $id = $product->getId();
         $SKU = $product->getSKU();
@@ -211,11 +210,11 @@ class Database {
         $stock = $product->getStock();
         $img = $product->getImg();
 
-        $stmt = $this->db->prepare($query) or die($stmt->error);
+        $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssssdisi', $SKU, $name, $smallDescription, $description, $price, $stock, $img, $id) or die($stmt->error);
         $stmt->execute() or die($stmt->error);
 
-        if ($stmt->affected_rows == 1) {
+        if ($stmt->affected_rows > 0) {
             $ret = true;
         }
         $stmt->close();
@@ -226,7 +225,7 @@ class Database {
     // ------------------ UPDATE PRODUCT CATEGORY ID -------------- //
     public function updateProductCategory($product, $categoryId) {
         //query
-        $query = "UPDATE `Product_has_Categories` SET `Categories_CategoryId` = ? WHERE `Product_ProductId` = ?";
+        $query = "INSERT INTO `Product_has_Categories` (`Categories_CategoryId`, `Product_ProductId`) VALUES (?, ?)";
 
         //local variables
         $ret = false;
@@ -257,6 +256,46 @@ class Database {
         $stmt->execute();
 
         if ($stmt->affected_rows == 1) {
+            $ret = true;
+        }
+        $stmt->close();
+
+        return $ret;
+    }
+
+    // --------------- GET CATEGORY -------------- //
+    public function getCategory($id) {
+        //query
+        $query = "SELECT * FROM categories WHERE CategoryId = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $stmt->bind_result($categoryId, $name, $parentId);
+        while ($stmt->fetch()) {
+            $result[] = [
+                "CategoryId" => $categoryId,
+                "Name" => $name,
+                "ParentId" => $parentId
+            ];
+        }
+        $stmt->close();
+
+        return $result;
+    }
+
+    // ---------------- DELETE CATEGORIES ------------- //
+    public function deleteCategory($productId) {
+        $ret = false;
+
+        //query
+        $query = "DELETE FROM product_has_categories WHERE Product_ProductId = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $productId);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
             $ret = true;
         }
         $stmt->close();
@@ -374,6 +413,7 @@ class Database {
         return $ret;
     }
 
+    // ------------------- UPDATE STOCK -------------- //
     public function updateProductStock($productId) {
         $query = "SELECT stock FROM product WHERE ProductId = ?";
 

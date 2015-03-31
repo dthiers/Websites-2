@@ -15,9 +15,7 @@ include '../view/HeaderView.php';
 include '../view/ProductView.php';
 include '../view/FooterView.php';
 
-if(!empty($_POST)){
-    echo "testje";
-
+if (!empty($_POST)) {
     $id = $_POST['id'];
     $sku = $_POST['sku'];
     $name = $_POST['name'];
@@ -25,27 +23,40 @@ if(!empty($_POST)){
     $description = $_POST['description'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
-    $image = $_POST['image'];
 
+    $productOld = Product::getProduct($id);
+    $filepath = $productOld->getImg();
+    if (!empty($_FILES['image']['name'])) {
+        //image
+        $filetmp = $_FILES['image']['tmp_name'];
+        $filename = $_FILES['image']['name'];
+        $filepath = '../images/' . $filename;
+
+        move_uploaded_file($filetmp, $filepath);
+    }
+
+    $categoryId = $_POST['category'];
     $categoryIds = array();
     $categoryIds = $_POST['category'];
 
+    $product = new Product($id, $sku, $name, $small, $description, $price, $stock, $filepath);
+    $category = Category::getCategory($categoryId);
 
-    $product = new Product($id, $sku, $name, $small, $description, $price, $stock, $image);
-
-    // Categories moeten allemaal nog
+    $parent = $category->getParent();
 
     $db = Database::getDatabase();
-    if($db->updateProduct($product)){
+    if ($db->updateProduct($product)) {
         unset($_POST);
         $_POST = array();
-
-        foreach($categoryIds as $categoryId){
+        if ($categoryId != 0) {
+            $db->deleteCategory($product->getId());
+            if (!empty($parent)) {
+                $db->updateProductCategory($product, $parent);
+            }
             $db->updateProductCategory($product, $categoryId);
         }
-        header("Location: ../controller/AdminAddProductController.php");
+        header("Location: ../controller/WebshopController.php");
     }
-
 }
 
 

@@ -192,10 +192,11 @@ body {
     border: none;
 }
 .image {
-    /*background-image: url('../img/test.jpg'); */
     float: left;
-    width: 15%;
-    height: 80px;
+    height: 90px;
+    width: 90px;
+    max-height: 90px;
+    max-width: 90px;
 }
 
 .description {

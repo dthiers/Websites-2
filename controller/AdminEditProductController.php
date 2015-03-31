@@ -36,8 +36,6 @@ if (!empty($_POST)) {
     }
 
     $categoryId = $_POST['category'];
-    $categoryIds = array();
-    $categoryIds = $_POST['category'];
 
     $product = new Product($id, $sku, $name, $small, $description, $price, $stock, $filepath);
     $category = Category::getCategory($categoryId);
@@ -55,7 +53,7 @@ if (!empty($_POST)) {
             }
             $db->updateProductCategory($product, $categoryId);
         }
-        header("Location: ../controller/WebshopController.php");
+        header("Location: ../controller/AdminProductListController.php");
     }
 }
 

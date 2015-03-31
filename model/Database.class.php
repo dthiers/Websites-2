@@ -178,8 +178,8 @@ class Database {
 
         //local variables
         $ret = false;
-        $productId = $this->getLastProductId();
-
+        $productId = intval($this->getLastProductId());
+        echo "ID = ".$productId;
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii', $productId, $categoryId);
         $stmt->execute();
@@ -248,6 +248,14 @@ class Database {
     // --------------------- DELETE PRODUCT ------------------- //
     public function deleteProduct($productId) {
         $ret = false;
+
+        $query2 = "DELETE FROM product_has_categories WHERE Product_ProductId = ?";
+
+        $stmt2 = $this->db->prepare($query2);
+        $stmt2->bind_param('i', $productId);
+        $stmt2->execute();
+        $stmt2->close();
+
         //query
         $query = "DELETE FROM product WHERE ProductId = ?";
 
@@ -256,6 +264,61 @@ class Database {
         $stmt->execute();
 
         if ($stmt->affected_rows == 1) {
+            $ret = true;
+        }
+        $stmt->close();
+
+        return $ret;
+    }
+
+    // --------------- CREATE CATEGORY ----------- //
+    public function createCategory($category) {
+        //local
+        $ret = false;
+        $name = $category->getName();
+        $parent = $category->getParent();
+        if ($parent != null) {
+            $query = "INSERT INTO categories (Name, Parent_CategoryId) VALUES (?, ?)";
+        }
+        else {
+            $query = "INSERT INTO categories (Name) VALUES (?)";
+        }
+
+        $stmt = $this->db->prepare($query);
+
+        if ($parent != null) {
+            $stmt->bind_param('si', $name, $parent);
+        }
+        else {
+            $stmt->bind_param('s', $name);
+        }
+
+        $stmt->execute();
+        if ($stmt->affected_rows > 0) {
+            $ret = true;
+        }
+        $stmt->close();
+
+        return $ret;
+    }
+
+    // --------------- EDIT CATEGORY ------------ //
+    public function editCategory($category) {
+        //local
+        $ret = false;
+
+        $query = "UPDATE categories SET Name = ?, Parent_CategoryId = ? WHERE CategoryId = ?";
+
+        $id = $category->getId();
+        $name = $category->getName();
+        $parent = $category->getParent();
+
+        var_dump($category);
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sii', $name, $parent, $id);
+        $stmt->execute();
+        if ($stmt->affected_rows > 0) {
             $ret = true;
         }
         $stmt->close();
@@ -282,6 +345,32 @@ class Database {
         $stmt->close();
 
         return $result;
+    }
+
+    // --------------- DELETE CATEGORY FROM CATEGORY TABLE -------- //
+    public function deleteCategoryId($categoryId) {
+        $ret = false;
+
+        $query2 = "DELETE FROM product_has_categories WHERE Categories_CategoryId = ?";
+
+        $stmt2 = $this->db->prepare($query2);
+        $stmt2->bind_param('i', $categoryId);
+        $stmt2->execute();
+        $stmt2->close();
+
+        //query
+        $query = "DELETE FROM categories WHERE CategoryId = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $categoryId);
+        $stmt->execute();
+
+        if ($stmt->affected_rows == 1) {
+            $ret = true;
+        }
+        $stmt->close();
+
+        return $ret;
     }
 
     // ---------------- DELETE CATEGORIES ------------- //

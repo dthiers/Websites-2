@@ -25,8 +25,7 @@ if (!empty($_POST)) {
     $price = $_POST['price'];
     $stock = $_POST['stock'];
 
-    $categoryIds = array();
-    $categoryIds = $_POST['category'];
+    $categoryId = $_POST['category'];
 
     //image
     $filetmp = $_FILES['image']['tmp_name'];
@@ -36,21 +35,23 @@ if (!empty($_POST)) {
     move_uploaded_file($filetmp, $filepath);
 
     $product = new Product(null, $sku, $name, $small, $description, $price, $stock, $filepath);
+    $category = Category::getCategory($categoryId);
 
+    $parent = $category->getParent();
 
     if ($db->createProduct($product)) {
         unset($_POST);
         $_POST = array();
-
-        foreach ($categoryIds as $categoryId) {
+        if ($categoryId != 0) {
+            if (!empty($parent)) {
+                $db->createProductCategory($parent);
+            }
             $db->createProductCategory($categoryId);
         }
-        header("Location: ../controller/AdminAddProductController.php");
+        header("Location: ../controller/AdminProductListController.php");
     }
 
 }
-
-
 $categories = Category::getCategories();
 
 loadHeader();

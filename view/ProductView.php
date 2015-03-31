@@ -120,7 +120,7 @@ function addProduct($categories){
 
                 <div id="container_register">
                     <div id="form_register_head">
-                        <h1>Registreer nieuwe gebruiker</h1>
+                        <h1>Voeg nieuw product toe</h1>
                     </div><!-- form_register_head -->
                     <div id="form_register">
 
@@ -156,8 +156,8 @@ function addProduct($categories){
                                     <input type="file" id="image" name="image" accept="image/* class="field-style field-split align-right">
                                 </li>
                                 <li>
-                                    <label for="category">Categorien: </label>
-                                    <select name="category[]" multiple>
+                                    <label for="category">Categorieën: </label>
+                                    <select name="category">
                                         <?php
                                             foreach($categories as $category)
                                             {
@@ -204,7 +204,7 @@ function editProduct($categories, $product){
 
                 <div id="container_register">
                     <div id="form_register_head">
-                        <h1>Registreer nieuwe gebruiker</h1>
+                        <h1>Wijzig Product</h1>
                     </div><!-- form_register_head -->
                     <div id="form_register">
 
@@ -249,7 +249,7 @@ function editProduct($categories, $product){
                                     <input type="file" id="image" name="image" accept="image/* class="field-style field-split align-right">
                                 </li>
                                 <li>
-                                    <label for="category">Categorien: </label>
+                                    <label for="category">Categorieën: </label>
                                     <select name="category">
                                         <?php
                                         foreach($categories as $category)

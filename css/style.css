@@ -613,6 +613,7 @@ textarea{
     height: 10%;
     background-color: #158A9F;
     color: white;
+    text-align: center;
     border: 1px ridge black; <!-- kan je veranderen -->
 }
 
@@ -621,7 +622,7 @@ a.fill_order_container {
     top: 0;
     left: 0;
     height: 100%;
-    width: 100%;
+    width: 92%;
     text-decoration: none;
     z-index: 10; /* Places the link above everything else in the div */
     background-color: #FFF; /* Fix to make div clickable in IE */
@@ -632,7 +633,15 @@ a.fill_order_container {
     background-color: #4f5b66;
 }
 
+a#float_right {
+    float: right;
+    color: white;
+    text-decoration: none;
+}
 
+a#float_right:hover {
+    color: red;
+}
 /* =Forms
 -------------------------------------------------------------- */
 #basic_info{

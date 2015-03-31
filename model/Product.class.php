@@ -224,7 +224,7 @@ class Product {
     }
 
     // ---------------------------------- DELETE -------------------------------- //
-    public function deleteProduct($productId) {
+    static function deleteProduct($productId) {
 
         //db connection
         $db = Database::getDatabase();

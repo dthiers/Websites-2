@@ -17,10 +17,11 @@ include '../model/Navigation.class.php';
 include '../view/FooterView.php';
 
 $administration = array();
+$link = array();
 array_push($administration, "Producten", "Categorieën", "Orders");
-
+array_push($link, "AdminProductListController.php", "AdminCategoryListController.php", "AdminOrderListController.php");
 $size = count($administration);
 
 loadHeader();
-showAdministration($administration, $size);
+showAdministration($administration, $size, $link);
 loadFooter();

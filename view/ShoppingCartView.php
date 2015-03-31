@@ -21,15 +21,15 @@ function showShoppingcart($products)
                     <p>
                         Beste klant, u heeft
                         <?php
-                            if($_SESSION['amount'] < 1 ){
+                        if (!empty($_SESSION['amount'])) {
+                            if ($_SESSION['amount'] < 1) {
                                 echo ' 0 producten in de winkelwagen';
-                            }
-                            else if($_SESSION['amount'] == 1){
+                            } else if ($_SESSION['amount'] == 1) {
                                 echo ' 1 product in de winkelwagen';
+                            } else {
+                                echo $_SESSION['amount'] . ' producten in de winkelwagen';
                             }
-                        else {
-                            echo $_SESSION['amount'].' producten in de winkelwagen';
-                            }
+                        }
                         ?>
                     </p>
                 </div><!-- cart_head -->

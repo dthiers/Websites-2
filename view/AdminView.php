@@ -18,12 +18,14 @@ function showAdministration($administrations, $size)
                         <h1>Beheer</h1>
                         <?php
                         for ($i = 0; $i < $size; $i++) {
+                            $link = 0;
                             ?>
                             <div class="order_container">
                                 <p>
                                     <?php echo "<p>" . $administrations[$i] . " Beheer </p>"; ?>
                                     <!--<a href="#" class="fill_order_container"></a>-->
                                 </p>
+                                <a href="OrderProductController.php?id=<?php $link; ?>" class="fill_order_container"></a>
                             </div>
                         <?php
                         }

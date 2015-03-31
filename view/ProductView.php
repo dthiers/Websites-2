@@ -204,10 +204,18 @@ function editProduct($categories, $product){
         <div id="main">
             <div id="content">
 
+                <div id="login_head">
+                    <h1>Product beheren</h1>
+                </div>
+                <div id="breadcrumbs">
+                    <a href="../controller/HomeController.php">Home</a><span class="bread_pointer">></span>
+                    <a href="../controller/AdminController.php">Beheer</a><span class="bread_pointer">></span>
+                    <a href="../controller/AdminProductListController.php">Product beheer</a><span class="bread_pointer">></span>
+                    <a href="../controller/AdminEditProductController.php?id=<?php echo $product->getId(); ?>"><?php echo $product->getName(); ?></a>
+                </div><!-- breadcrumbs -->
+
                 <div id="container_register">
-                    <div id="form_register_head">
-                        <h1>Wijzig Product</h1>
-                    </div><!-- form_register_head -->
+
                     <div id="form_register">
 
                         <form class="form-style" method="POST" action="AdminEditProductController.php" enctype="multipart/form-data">

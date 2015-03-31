@@ -17,6 +17,10 @@ function showShoppingcart($products)
                 <div class="cart_head">
                     <h1>Winkelwagen</h1>
                 </div><!-- cart_head -->
+                <div id="breadcrumbs">
+                    <a href="../controller/HomeController.php">Home</a><span class="bread_pointer">></span>
+                    <a href="../controller/ShoppingCartController.php">Winkelwagen</a>
+                </div><!-- breadcrumbs -->
                 <div class="cart_head">
                     <p>
                         Beste klant, u heeft

@@ -580,7 +580,7 @@ footer, .push {
     height: 100px;
 }
 .form-style ul li input[type="button"],
-.form-style ul li input[type="submit"] {
+.form-style ul li input[type="submit"]{
     background-color: #1799b1;
     display: inline-block;
     cursor: pointer;
@@ -588,6 +588,18 @@ footer, .push {
     padding: 8px 18px;
     text-decoration: none;
     font: inherit;
+}
+
+.form-style ul li select{
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+
+    width: 49%;
+    float: right;
+    padding: 8px 18px;
+    background-color: white;
+    border: 1px solid #B0CFE0;
+    border-radius: 0;
 }
 .form-style ul li input[type="button"]:hover,
 .form-style ul li input[type="submit"]:hover {
@@ -736,15 +748,33 @@ a#float_right:hover {
 
 /*------------------ Global stuff ------------------*/
 input[type="button"],
-input[type="submit"] {
-    background-color: #1799b1;
+input[type="submit"],
+input[type="number"],
+input[type="tel"]{
+    //background-color: #1799b1;
+
     display: inline-block;
     cursor: pointer;
-    color: white;
+    color: black;
     padding: 8px 18px;
     text-decoration: none;
     font: inherit;
 }
+
+select {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+
+    display: inline-block;
+    padding: 8px 18px;
+    text-decoration: none;
+    //border: 0.1em solid #1799b1;
+
+    font: inherit;
+
+    border-radius: 0;
+}
+
 input[type="button"]:hover,
 input[type="submit"]:hover {
     background-color: #158A9F;
@@ -866,4 +896,12 @@ input[type="submit"]:hover {
     width: 85%;
     margin: 0 auto;
     border-top: 0.1em solid #c0c0c0;
+}
+
+
+/*------------------ Admin  ------------------*/
+
+#container_admin {
+    width: 85%;
+    margin: 0 auto;
 }

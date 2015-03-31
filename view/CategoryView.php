@@ -70,11 +70,18 @@ function editCategory($categories, $category) {
     <div id="wrapper">
         <div id="main">
             <div id="content">
+                <div id="login_head">
+                    <h1>Beheren categorieen</h1>
+                </div>
+                <div id="breadcrumbs">
+                    <a href="../controller/HomeController.php">Home</a><span class="bread_pointer">></span>
+                    <a href="../controller/AdminController.php">Beheer</a><span class="bread_pointer">></span>
+                    <a href="../controller/AdminCategoryListController.php">Categorie beheer</a><span class="bread_pointer">></span>
+                    <a href="../controller/AdminEditCategoryController.php?id=<?php echo $category->getId(); ?>"><?php echo $category->getName(); ?></a>
+                </div><!-- breadcrumbs -->
+
 
                 <div id="container_register">
-                    <div id="form_register_head">
-                        <h1>Categorie aanpassen</h1>
-                    </div><!-- form_register_head -->
                     <div id="form_register">
 
                         <form class="form-style" method="POST" action="AdminEditCategoryController.php">
@@ -88,7 +95,7 @@ function editCategory($categories, $category) {
                                 </li>
                                 <li>
                                     <label for="category">Vorige Categorie: </label>
-                                    <select name="categoryParent">
+                                    <select id=category" name="categoryParent" class="field-style field-split">
                                         <?php
                                         foreach($categories as $categoryItem)
                                         {

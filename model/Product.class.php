@@ -162,6 +162,17 @@ class Product {
         return $product;
     }
 
+    // Search products
+    static function searchProducts($search) {
+        //db connection
+        $db = Database::getDatabase();
+
+        $result = $db->searchProducts($search);
+        $products = Product::returnResults($result);
+
+        return $products;
+    }
+
     //returns all products of the linked order id
     static function getProductsFromOrder($orderId) {
         //db connection

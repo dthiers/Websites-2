@@ -622,6 +622,7 @@ class Database {
         return $result;
     }
 
+    // ---------------- CREATE BLOG ------------ //
     public function createBlog($blog){
         $return = false;
 
@@ -643,7 +644,36 @@ class Database {
 
     }
 
+    // --------------- SEARCH PRODUCTS -------------- //
+    public function searchProducts($search) {
+        // query
+        $query = "SELECT * FROM product WHERE Name LIKE ? OR Small_Description LIKE ? OR Description LIKE ? OR Price LIKE ?";
 
+        $stmt = $this->db->prepare($query);
+        $search = "%".$search."%";
+        $stmt->bind_param('ssss', $search, $search, $search, $search);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($productId, $sku, $name, $smallDescription, $description, $price, $stock, $imageURL);
+
+        $result = array();
+
+        while ($stmt->fetch()) {
+            $result[] = [
+                "ProductId" => $productId,
+                "SKU" => $sku,
+                "Name" => $name,
+                "SmallDescription" => $smallDescription,
+                "Description" => $description,
+                "Price" => $price,
+                "Stock" => $stock,
+                "ImageURL" => $imageURL
+            ];
+        }
+        $stmt->close();
+
+        return $result;
+    }
 
     static function getDatabase() {
         if (Database::$instance == null) {

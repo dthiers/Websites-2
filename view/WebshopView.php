@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="price">
-                                <?php echo "€" . $productItem->getPrice(); ?>
+                                <?php echo "€" . number_format((float)$productItem->getPrice(), 2, ',', ''); ?>
                             </div>
                             <?php
                             if ($productItem->getStock() <= 0) {

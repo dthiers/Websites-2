@@ -652,10 +652,16 @@ a#float_right:hover {
 #product_img {
     text-align: center;
     vertical-align: middle;
-    height: 200px;
+    min-height: 200px;
+    height: auto;
     width: 39%;
     float: left;
     //border: 0.1em solid #c0c0c0;
+}
+
+#product_img img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 #product_description {
@@ -692,7 +698,7 @@ a#float_right:hover {
 }
 
 
-#product_details a {
+#product_details a, #check_out_button a {
     background-color: #1799b1;
     display: inline-block;
     cursor: pointer;
@@ -759,4 +765,105 @@ input[type="submit"]:hover {
 .bread_pointer {
     margin: 0 1px 0 6px;
     color: #158A9F;
+}
+
+
+/*------------------ Shoppingcart ------------------*/
+
+.cart_head {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    background-color: white;
+    width: 85%;
+    border-bottom: 0.1em solid #c0c0c0;
+}
+
+#shopping_cart {
+    margin: 0 auto;
+    width: 85%;
+    background: green;
+}
+
+.shopping_cart_item {
+    float: left;
+    padding: 20px;
+    margin: 20px;
+    width: 200px;
+    height: 250px;
+    box-shadow: 0em 0em 0.8em #bfbfbf;
+}
+
+.shopping_cart_item_cross,
+.shopping_cart_item_title,
+.shopping_cart_item_price {
+    display: block;
+    width: 100%;
+    height: 10%;
+    margin: 5px;
+}
+
+.shopping_cart_item:hover {
+    box-shadow: 0em 0em 1.5em #888888;
+
+}
+
+.shopping_cart_item_cross {
+    text-align: right;
+    font-weight: bold;
+}
+
+.shopping_cart_item_cross img{
+    float: right;
+    max-height: 50%;
+}
+
+.shopping_cart_item_img {
+    display: block;
+    width: 100%;
+    height: 67%;
+    //border: 1px solid black;
+}
+
+.shopping_cart_item_img img {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.shopping_cart_item_img a {
+    position: absolute;
+    z-index: 10;
+    width: 200px;
+    height: 170px;
+}
+
+
+.shopping_cart_item_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: 0.1em solid #c0c0c0;
+}
+
+.shopping_cart_item_price {
+    text-align: right;
+    font-weight: bold;
+}
+
+#check_out {
+    width: 85%;
+    height: auto;
+    margin: 0 auto;
+    border-bottom: 0.1em solid #c0c0c0;
+}
+
+#check_out_price {
+    float: right;
+    margin: 20px;
+    padding: 20px;
+}
+
+#check_out_button {
+    width: 85%;
+    margin: 0 auto;
+    border-top: 0.1em solid #c0c0c0;
 }

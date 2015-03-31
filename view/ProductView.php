@@ -70,7 +70,9 @@ function showProductDetails($categories, $product)
                     </div><!-- basic_info -->
 
                     <div id="product_img">
-                        <img src=<?php echo "../images/" . (rand(1, 5)) . ".jpg"; ?>>
+                        <a href="<?php echo $product->getImg(); ?>" target="_blank">
+                            <img src=<?php echo $product->getImg(); ?>>
+                        </a>
                     </div><!-- product_img -->
                     <div class="clearer"></div><!-- clearer -->
 
@@ -81,7 +83,7 @@ function showProductDetails($categories, $product)
 
                     <div id="product_details">
                         <div id="product_price">
-                            <?php echo '$'.$product->getPrice(); ?>
+                            <?php echo '$'.number_format((float)$product->getPrice(), 2, ',', ''); ?>
                         </div><!-- product_price -->
                         <div id="product_stock">
                             <?php echo $product->getStock().' in stock'; ?>

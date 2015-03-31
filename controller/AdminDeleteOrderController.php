@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Raymond
  * Date: 31-3-2015
- * Time: 14:46
+ * Time: 17:55
  */
 
 if(!isset($_SESSION)){
@@ -18,6 +18,6 @@ include '../view/FooterView.php';
 
 $db = Database::getDatabase();
 $id = $_GET['id'];
-$delete = $db->deleteCategoryId($id);
+$delete = $db->deleteOrder($id);
 
-header("Location: AdminCategoryListController.php");
+header("Location: AdminOrderListController.php");

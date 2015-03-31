@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Raymond
  * Date: 31-3-2015
- * Time: 14:46
+ * Time: 17:34
  */
 
 if(!isset($_SESSION)){
@@ -15,9 +15,16 @@ include '../view/AdminView.php';
 include '../view/HeaderView.php';
 include '../model/Navigation.class.php';
 include '../view/FooterView.php';
+include '../model/Order.class.php';
+include '../model/User.class.php';
 
-$db = Database::getDatabase();
-$id = $_GET['id'];
-$delete = $db->deleteCategoryId($id);
+$orders = Order::getAllOrdersAdmin();
+$user = array();
 
-header("Location: AdminCategoryListController.php");
+foreach ($orders as $order) {
+    $user[] = User::getUserById(($order->getUserId()));
+}
+
+loadHeader();
+showOrderList($orders, $user);
+loadFooter();

@@ -123,7 +123,7 @@ class Product {
             $product = new Product($id, $sku, $name, $small_description, $description, $price, $stock, $img);
 
             $products[] = $product;
-        };
+        }
         return $products;
     }
 

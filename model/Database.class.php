@@ -443,6 +443,72 @@ class Database {
         return $result;
     }
 
+    // ------------------- GET USER BY ID ----------------- //
+    public function getUserById($id) {
+        $query = "SELECT * FROM users WHERE UserId = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($id, $username, $password, $email, $phone, $firstName, $lastName, $address, $zip, $city, $country);
+
+        while ($stmt->fetch()) {
+            $result[] = [
+                "UserId" => $id,
+                "Username" => $username,
+                "Password" => $password,
+                "Email" => $email,
+                "Phone" => $phone,
+                "FirstName" => $firstName,
+                "LastName" => $lastName,
+                "Address" => $address,
+                "Zip" => $zip,
+                "City" => $city,
+                "Country" => $country
+            ];
+        }
+        $stmt->close();
+
+        return $result;
+    }
+
+    // ------------------- DELETE ORDER ---------------- //
+    public function deleteOrder($orderId) {
+        $ret = false;
+
+        //query
+        $query = "DELETE FROM orders_has_product WHERE Orders_OrderId = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $orderId);
+        $stmt->execute();
+        $stmt->close();
+
+        //query2
+        $query2 = "DELETE FROM orders WHERE OrderId = ?";
+
+        $stmt2 = $this->db->prepare($query2);
+        $stmt2->bind_param('i', $orderId);
+        $stmt2->execute();
+
+        if ($stmt2->affected_rows > 0) {
+            $ret = true;
+        }
+        $stmt2->close();
+
+        return $ret;
+    }
+
+    // ------------------- GET ALL ORDERS -------------- //
+    public function getAllOrdersAdmin() {
+        //query
+        $query = "SELECT * FROM orders AS o JOIN users AS u ON o.Users_UserId = u.UserId";
+        $result = $this->db->query($query);
+
+        return $result;
+    }
+
     // ------------------- ORDER FOR USER -------------- //
     public function createOrder($userId, $order) {
         // local variables

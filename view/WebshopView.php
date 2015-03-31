@@ -131,7 +131,7 @@ function showProductsOrder($products)
                                     <?php echo "<p>" . $productItem->getName() . "</p>"; ?>
                                     <?php echo "<p>" . $productItem->getSmallDescription() . " €" . $productItem->getPrice() . "</p>"; ?>
                                     <?php $totaalPrijs += $productItem->getPrice(); ?>
-                                    <!--<a href="#" class="fill_order_container"></a>-->
+                                    <a href="ProductController.php?id=<?php echo $productItem->getId(); ?>" class="fill_order_container"></a>
                                 </p>
                             </div>
                         <?php

@@ -161,4 +161,31 @@ class Order {
 
         return $orders;
     }
+
+    static function getAllOrdersAdmin() {
+        //db
+        $db = Database::getDatabase();
+
+        $result = $db->getAllOrdersAdmin();
+
+        $orders = array();
+
+        while ($row = $result->fetch_assoc()) {
+            $id = $row['OrderId'];
+            $userId = $row['Users_UserId'];
+            $paid = $row['Paid'];
+            $date = $row['Date'];
+            $paymentDate = $row['PaymentDate'];
+            $address = $row['Address'];
+            $zip = $row['Zip'];
+            $city = $row['City'];
+            $country = $row['Country'];
+
+            $order = new Order($id, $userId, $paid, $date, $paymentDate, $address, $zip, $city, $country);
+
+            $orders[] = $order;
+        }
+
+        return $orders;
+    }
 }

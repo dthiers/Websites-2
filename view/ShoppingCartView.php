@@ -51,14 +51,14 @@ function showShoppingcart($products)
                             <div class="clearer"></div>
                             <div class="shopping_cart_item_cross">
                                 <a href="DeleteProductFromShoppingCartController.php?id=<?php echo $productItem->getId(); ?>">
-                                    <img src="../images/cross.png">
+                                    <img src="../images/cross.png" alt=" " />
                                 </a>
                             </div>
                             <div class="shopping_cart_item_img">
                                 <a  href="ProductController.php?id=<?php echo $productItem->getId(); ?>">
 
                                 </a>
-                                <img src="<?php echo $productItem->getImg(); ?>">
+                                <img src="./<?php echo $productItem->getImg(); ?>" alt=" "/>
                             </div>
                             <div class="shopping_cart_item_title">
                                 <?php echo $productItem->getName(); ?>

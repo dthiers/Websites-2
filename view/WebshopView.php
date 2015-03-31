@@ -23,38 +23,35 @@
                 <div id="categories">
                     <h1>Categories</h1>
 
-                    <p>
                     <ul>
                         <?php
                         $counter = 0;
                         foreach ($categories as $categoryItem) {
                             if ($categoryItem->getParent() == 0) { ?>
-                                <input id="<?php echo "input" . $counter; ?>" type="checkbox" class="main_category">
                                 <li>
-                                <a class="main"
-                                   href="CategoryProductsController.php?id=<?php echo $categoryItem->getId(); ?>"><?php echo $categoryItem->getName(); ?></a>
-                                <label for="<?php echo "input" . $counter; ?>"><?php //echo $categoryItem->getName(); ?>
-                                    ></label>
+                                    <a class="main" href="CategoryProductsController.php?id=<?php echo $categoryItem->getId(); ?>"><?php echo $categoryItem->getName(); ?></a>
+
+                                        <ul>
+                                            <?php
+                                            foreach ($categories as $item) {
+                                                if ($categoryItem->getId() == $item->getParent()) {
+                                                    ?>
+                                                    <li>
+                                                        <a href="CategoryProductsController.php?id=<?php echo $item->getId(); ?>"><?php echo $item->getName(); ?></a>
+                                                    </li>
+                                                <?php
+                                                }
+                                            } ?>
+                                        </ul>
+                                </li>
                             <?php
-                            } ?>
-                            <ul>
-                                <?php
-                                foreach ($categories as $item) {
-                                    if ($categoryItem->getId() == $item->getParent()) {
-                                        ?>
-                                        <li>
-                                            <a href="CategoryProductsController.php?id=<?php echo $item->getId(); ?>"><?php echo $item->getName(); ?></a>
-                                        </li>
-                                    <?php
-                                    }
-                                } ?>
-                            </ul></li>
-                            <?php
+
+                            }
                             $counter++;
                         }
                         ?>
                     </ul>
-                    </p>
+
 
                 </div>
                 <!-- categories -->
@@ -64,7 +61,7 @@
                         ?>
                         <div class="item">
                             <div class="image">
-                                <img src=<?php echo $productItem->getImg(); ?>>
+                                    <img src="./<?php echo $productItem->getImg(); ?>" alt=" "/>
                             </div>
                             <div class="description">
                                 <div class="title">
@@ -88,8 +85,7 @@
                                 ?>
                                 <div class="cart">
                                     <div class="cart_img">
-                                        <a href="AddToShoppingCartController.php?id=<?php echo $productItem->getId(); ?>"><img
-                                                src="../images/cart_small25.png" alt="cart"/></a>
+                                        <a href="AddToShoppingCartController.php?id=<?php echo $productItem->getId(); ?>"><img src="../images/cart_small25.png" alt="cart" /></a>
                                     </div>
                                     <!-- cart_img -->
                                 </div><!-- cart -->
@@ -125,33 +121,36 @@ function showProductsOrder($products)
         <div id="main">
             <div id="content">
 
-                <div id="container_home">
-                    <div id="content_home">
-                        <h1>Producten in order</h1>
-                        <?php
-                        foreach ($products as $productItem) {
-                            ?>
-                            <div class="order_container">
-                                <p>
-                                    <?php echo "<p>" . $productItem->getName() . "</p>"; ?>
-                                    <?php echo "<p>" . $productItem->getSmallDescription() . " €" . $productItem->getPrice() . "</p>"; ?>
-                                    <?php $totaalPrijs += $productItem->getPrice(); ?>
-                                    <a href="ProductController.php?id=<?php echo $productItem->getId(); ?>" class="fill_order_container"></a>
-                                </p>
-                            </div>
-                        <?php
-                        }
+                <div id="login_head">
+                    <h1>Producten in order</h1>
+                </div>
+                <div id="breadcrumbs">
+                    <a href="../controller/HomeController.php">Home</a><span class="bread_pointer">></span>
+                    <a href="../controller/OrderController.php">Orders</a><span class="bread_pointer">></span>
+                    <a href="#">Order</a>
+                </div><!-- breadcrumbs -->
+                    <div id="container_admin">
+                    <?php
+                    foreach ($products as $productItem) {
                         ?>
                         <div class="order_container">
                             <p>
-                                Totaalprijs: €<?php echo $totaalPrijs; ?>
-                                <!--<a href="#" class="fill_order_container"></a>-->
+                                <?php echo "<p>" . $productItem->getName() . "</p>"; ?>
+                                <?php echo "<p>" . $productItem->getSmallDescription() . " €" . $productItem->getPrice() . "</p>"; ?>
+                                <?php $totaalPrijs += $productItem->getPrice(); ?>
+                                <a href="ProductController.php?id=<?php echo $productItem->getId(); ?>" class="fill_order_container"></a>
                             </p>
                         </div>
+                    <?php
+                    }
+                    ?>
+                    <div class="order_container">
+                        <p>
+                            Totaalprijs: €<?php echo $totaalPrijs; ?>
+                            <!--<a href="#" class="fill_order_container"></a>-->
+                        </p>
                     </div>
-                    <!-- content_home -->
-                </div>
-                <!-- container_home -->
+                </div><!-- container_admin -->
 
             </div>
             <!-- content -->

@@ -42,7 +42,7 @@ function showRegister()
                                     <input type="text" id="firstName" name="firstName" class="field-style field-split align-right" />
                                 </li>
                                 <li>
-                                    <label for="lastname">Achternaam</label>
+                                    <label for="lastName">Achternaam</label>
                                     <input type="text" id="lastName" name="lastName" class="field-style field-split align-right" />
                                 </li>
                                 <li>

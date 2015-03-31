@@ -14,27 +14,28 @@ function showOrders($orders)
         <div id="main">
             <div id="content">
 
-                <div id="container_home">
-                    <div id="content_home">
-                        <h1>Orders</h1>
-                        <?php
-                        foreach ($orders as $orderItem) {
-                            ?>
-                            <div class="order_container">
-                                <p>
-                                    <?php echo "<p>Order id: " . $orderItem->getId() . "</p>"; ?>
-                                    <?php echo "<p>" . $orderItem->getAddress() . " " . $orderItem->getZip() . "</p>"; ?>
-                                    <?php echo "<p>" . $orderItem->getCity() . " " . $orderItem->getCountry() . "</p>"; ?>
-                                    <a href="OrderProductController.php?id=<?php echo $orderItem->getId(); ?>" class="fill_order_container"></a>
-                                </p>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                    </div>
-                    <!-- content_home -->
+                <div id="login_head">
+                    <h1>Mijn orders</h1>
                 </div>
-                <!-- container_home -->
+                <div id="breadcrumbs">
+                    <a href="../controller/HomeController.php">Home</a><span class="bread_pointer">></span>
+                    <a href="../controller/OrderController.php">Orders</a>
+                </div><!-- breadcrumbs -->
+
+                <div id="container_admin">
+                <?php
+                foreach ($orders as $orderItem) {
+                    ?>
+                    <div class="order_container">
+                            <?php echo "<p>Order id: " . $orderItem->getId() . "</p>"; ?>
+                            <?php echo "<p>" . $orderItem->getAddress() . " " . $orderItem->getZip() . "</p>"; ?>
+                            <?php echo "<p>" . $orderItem->getCity() . " " . $orderItem->getCountry() . "</p>"; ?>
+                            <a href="OrderProductController.php?id=<?php echo $orderItem->getId(); ?>" class="fill_order_container"></a>
+                    </div>
+                <?php
+                }
+                ?>
+                </div><!-- container_admin -->
 
             </div>
             <!-- content -->

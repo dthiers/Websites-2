@@ -72,7 +72,7 @@ function showProductList($products)
                                 <p>
                                     <?php echo $productItem->getName(); ?>
                                     <!--<a href="#" class="fill_order_container"></a>-->
-                                    <a id="float_right"
+                                    <a class="float_right"
                                        href="AdminDeleteProductController.php?id=<?php echo $productItem->getId(); ?>">Verwijderen</a>
                                 </p>
                                 <a href="AdminEditProductController.php?id=<?php echo $productItem->getId(); ?>"
@@ -126,7 +126,7 @@ function showCategoryList($categories)
                                 <p>
                                     <?php echo $categoryItem->getName(); ?>
                                     <!--<a href="#" class="fill_order_container"></a>-->
-                                    <a id="float_right"
+                                    <a class="float_right"
                                        href="AdminDeleteCategoryController.php?id=<?php echo $categoryItem->getId(); ?>">Verwijderen</a>
                                 </p>
                                 <a href="AdminEditCategoryController.php?id=<?php echo $categoryItem->getId(); ?>"
@@ -165,38 +165,41 @@ function showOrderList($orders, $user)
         <div id="main">
             <div id="content">
 
-                <div id="container_home">
-                    <div id="content_home">
-                        <h1>Beheer Orders</h1>
-                        <?php
-                        foreach ($orders as $orderItem) {
-                            ?>
-                            <div class="order_container">
-                                    <?php
-                                    foreach ($user as $userItem) {
-                                        if ($userItem->getId() == $orderItem->getUserId()) {
-                                            ?>
-                                            <p>
-                                                <?php echo "order id: ".$orderItem->getId()." Gebruiker: ".$userItem->getUsername(); ?>
-                                                <!--<a href="#" class="fill_order_container"></a>-->
-                                                <a id="float_right"
-                                                   href="AdminDeleteOrderController.php?id=<?php echo $orderItem->getId(); ?>">Verwijderen</a>
-                                            </p>
-                                            <a href="OrderProductController.php?id=<?php echo $orderItem->getId(); ?>"
-                                               class="fill_order_container"></a>
-                                            <?php
-                                            break;
-                                        }
-                                    }
-                                    ?>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                    </div>
-                    <!-- content_home -->
+                <div id="login_head">
+                    <h1>Order beheer</h1>
                 </div>
-                <!-- container_home -->
+                <div id="breadcrumbs">
+                    <a href="../controller/HomeController.php">Home</a><span class="bread_pointer">></span>
+                    <a href="../controller/AdminController.php">Beheer</a><span class="bread_pointer">></span>
+                    <a href="../controller/AdminOrderListController.php">Order beheer</a>
+                </div><!-- breadcrumbs -->
+                <div id="container_admin">
+                    <?php
+                    foreach ($orders as $orderItem) {
+                        ?>
+                        <div class="order_container">
+                                <?php
+                                foreach ($user as $userItem) {
+                                    if ($userItem->getId() == $orderItem->getUserId()) {
+                                        ?>
+                                        <p>
+                                            <?php echo "order id: ".$orderItem->getId()." Gebruiker: ".$userItem->getUsername(); ?>
+                                            <!--<a href="#" class="fill_order_container"></a>-->
+                                            <a class="float_right"
+                                               href="AdminDeleteOrderController.php?id=<?php echo $orderItem->getId(); ?>">Verwijderen</a>
+                                        </p>
+                                        <a href="OrderProductController.php?id=<?php echo $orderItem->getId(); ?>"
+                                           class="fill_order_container"></a>
+                                        <?php
+                                        break;
+                                    }
+                                }
+                                ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div><!-- container_admin -->
 
             </div>
             <!-- content -->

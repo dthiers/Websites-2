@@ -2,7 +2,7 @@
     <div id="footer_container">
         <div id="footer_img">
             <div id="footer_img_div">
-                <img src="../images/woty_logo.png">
+                <img src="../images/woty_logo.png" alt="woty"/>
             </div>
         </div><!-- footer_img -->
         <div id="footer_content">

@@ -87,7 +87,7 @@ function editCategory($categories, $category) {
                         <form class="form-style" method="POST" action="AdminEditCategoryController.php">
                             <ul>
                                 <li>
-                                    <input type="hidden" name="id" value="<?php echo $category->getId(); ?>"
+                                    <input type="hidden" name="id" value="<?php echo $category->getId(); ?>">
                                 </li>
                                 <li>
                                     <label for="categoryName">Naam: </label>
@@ -95,7 +95,7 @@ function editCategory($categories, $category) {
                                 </li>
                                 <li>
                                     <label for="category">Vorige Categorie: </label>
-                                    <select id=category" name="categoryParent" class="field-style field-split">
+                                    <select id="category" name="categoryParent" class="field-style field-split">
                                         <?php
                                         foreach($categories as $categoryItem)
                                         {

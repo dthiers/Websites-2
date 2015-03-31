@@ -20,39 +20,42 @@ function showProductDetails($categories, $product)
                     <a href="../controller/WebshopController.php">Webshop</a><span class="bread_pointer">></span>
                     <a href="../controller/ProductController.php?id=<?php echo $product->getId(); ?>"><?php echo $product->getName(); ?></a>
                 </div><!-- breadcrumbs -->
-                <!-- CATEGORY MENU -->
+                <!-- HIER KOMT HET CATEGORIE MENU-->
                 <div id="categories">
                     <h1>Categories</h1>
-                    <p>
+
                     <ul>
                         <?php
                         $counter = 0;
                         foreach ($categories as $categoryItem) {
                             if ($categoryItem->getParent() == 0) { ?>
-                                <input id="<?php echo "input" . $counter; ?>" type="checkbox" class="main_category">
                                 <li>
-                                <a class="main" href="CategoryProductsController.php?id=<?php echo $categoryItem->getId(); ?>"><?php echo $categoryItem->getName(); ?></a>
-                                <label for="<?php echo "input" . $counter; ?>"><?php //echo $categoryItem->getName(); ?>
-                                    ></label>
+                                    <a class="main" href="CategoryProductsController.php?id=<?php echo $categoryItem->getId(); ?>"><?php echo $categoryItem->getName(); ?></a>
+
+                                    <ul>
+                                        <?php
+                                        foreach ($categories as $item) {
+                                            if ($categoryItem->getId() == $item->getParent()) {
+                                                ?>
+                                                <li>
+                                                    <a href="CategoryProductsController.php?id=<?php echo $item->getId(); ?>"><?php echo $item->getName(); ?></a>
+                                                </li>
+                                            <?php
+                                            }
+                                        } ?>
+                                    </ul>
+                                </li>
                             <?php
-                            } ?>
-                            <ul>
-                                <?php
-                                foreach ($categories as $item) {
-                                    if ($categoryItem->getId() == $item->getParent()) {
-                                        ?>
-                                        <li><a href="CategoryProductsController.php?id=<?php echo $item->getId(); ?>"><?php echo $item->getName(); ?></a></li>
-                                    <?php
-                                    }
-                                }?>
-                            </ul></li>
-                            <?php
+
+                            }
                             $counter++;
                         }
                         ?>
                     </ul>
-                    </p>
-                </div><!-- categories -->
+
+
+                </div>
+                <!-- categories -->
 
                 <div class="container_store2">
 
@@ -71,7 +74,7 @@ function showProductDetails($categories, $product)
 
                     <div id="product_img">
                         <a href="<?php echo $product->getImg(); ?>" target="_blank">
-                            <img src=<?php echo $product->getImg(); ?>>
+                            <img src="./<?php echo $product->getImg(); ?>" alt=" " />
                         </a>
                     </div><!-- product_img -->
                     <div class="clearer"></div><!-- clearer -->
@@ -81,7 +84,7 @@ function showProductDetails($categories, $product)
                         <p><?php echo $product->getDescription(); ?></p>
                     </div><!-- product_description -->
 
-                    <div id="product_details">
+                    <div id="product_details2">
                         <div id="product_price">
                             <?php echo '$'.number_format((float)$product->getPrice(), 2, ',', ''); ?>
                         </div><!-- product_price -->
@@ -135,7 +138,7 @@ function addProduct($categories){
                                 </li>
                                 <li>
                                     <label for="name">Naam: </label>
-                                    <input type="text" id="name" name="name" class="field-style field-split align-right" required />
+                                    <input type="text" id="name" name="name" class="field-style field-split align-right" required/>
                                 </li>
                                 <li>
                                     <label for="smallDescription">Korte beschrijving: </label>
@@ -155,7 +158,7 @@ function addProduct($categories){
                                 </li>
                                 <li>
                                     <label for="image">Afbeelding: </label>
-                                    <input type="file" id="image" name="image" accept="image/* class="field-style field-split align-right">
+                                    <input type="file" id="image" name="image" accept="image/*" class="field-style field-split align-right">
                                 </li>
                                 <li>
                                     <label for="category">Categorieën: </label>
@@ -232,7 +235,7 @@ function editProduct($categories, $product){
                                 <li>
                                     <label for="name">Naam: </label>
                                     <input type="text" id="name" name="name" class="field-style field-split align-right"
-                                           value ="<?php echo $product->getName(); ?>"required />
+                                           value ="<?php echo $product->getName(); ?>" required />
                                 </li>
                                 <li>
                                     <label for="smallDescription">Korte beschrijving: </label>
@@ -242,7 +245,7 @@ function editProduct($categories, $product){
                                 <li>
                                     <label for="description">Beschrijving: </label>
                                     <input type="text" id="description" name="description" class="field-style field-split align-right"
-                                           value="<?php echo $product->getDescription(); ?>"required/>
+                                           value="<?php echo $product->getDescription(); ?>" required/>
                                 </li>
                                 <li>
                                     <label for="price">Prijs: </label>
@@ -256,11 +259,11 @@ function editProduct($categories, $product){
                                 </li>
                                 <li>
                                     <label for="image">Afbeelding: </label>
-                                    <input type="file" id="image" name="image" accept="image/* class="field-style field-split align-right">
+                                    <input type="file" id="image" name="image" accept="image/*" class="field-style field-split align-right">
                                 </li>
                                 <li>
                                     <label for="category">Categorieën: </label>
-                                    <select name="category">
+                                    <select id="category" name="category">
                                         <?php
                                         foreach($categories as $category)
                                         {

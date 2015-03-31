@@ -29,6 +29,8 @@ if (isset($_SESSION['amount'])) {
     <link rel="stylesheet" href="../css/style.css"/>
 </head>
 
+<body>
+
 <header>
     <div class="container clearfix">
         <h1 id="logo">
@@ -82,4 +84,3 @@ if (isset($_SESSION['amount'])) {
 </header>
 <!-- /header -->
 
-<body>

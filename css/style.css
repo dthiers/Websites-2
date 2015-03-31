@@ -37,6 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ol, ul {
+    width: 50%;
     list-style: none;
 }
 li {
@@ -665,13 +666,13 @@ a.fill_order_container {
     background-color: #4f5b66;
 }
 
-a#float_right {
+a.float_right {
     float: right;
     color: white;
     text-decoration: none;
 }
 
-a#float_right:hover {
+a.float_right:hover {
     color: red;
 }
 /* =Forms
@@ -709,6 +710,13 @@ a#float_right:hover {
 }
 
 #product_details {
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-top: 0.1em solid #c0c0c0;
+}
+
+#product_details2 {
     display: block;
     width: 100%;
     height: 50px;

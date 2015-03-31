@@ -1,8 +1,24 @@
 <footer>
     <div id="footer_container">
-        <p>
-            HIER KOMT DE FOOTER
-        </p>
+        <div id="footer_img">
+            <div id="footer_img_div">
+                <img src="../images/woty_logo.png">
+            </div>
+        </div><!-- footer_img -->
+        <div id="footer_content">
+            <div class="footer_content_block">
+                Contact
+            </div><!--footer_content_block -->
+            <div class="footer_content_block">
+                Over Webshop
+            </div><!--footer_content_block -->
+            <div class="footer_content_block">
+                Algemene voorwaarden
+            </div><!--footer_content_block -->
+            <div class="footer_content_block">
+                Privacy
+            </div><!--footer_content_block -->
+        </div><!-- footer_content -->
     </div>
 </footer>
 

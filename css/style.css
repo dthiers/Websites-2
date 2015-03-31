@@ -485,11 +485,43 @@ footer, .push {
 #footer_container {
     color: white;
     height: 100%;
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
 }
 
+#footer_content {
+    float: right;
+    display: inline-block;
+    width: 84%;
+    height: 100%;
+}
 
+.footer_content_block {
+    float: left;
+    width: 24%;
+    margin-top: 20px;
+    text-align: center;
+    vertical-align: middle;
+    height: 50%;
+
+    color: white;
+}
+
+#footer_img {
+    width: 15%;
+    float: right;
+
+}
+
+#footer_img_div {
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+}
+
+#footer_img_div img{
+    height: inherit;
+}
 
 
 /* =Forms

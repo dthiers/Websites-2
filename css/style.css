@@ -147,6 +147,26 @@ body {
     border-bottom: 0.1em solid #c0c0c0;
 }
 
+#webshop_head {
+    text-align: justify;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    background-color: white;
+    width: 85%;
+    border-bottom: 0.1em solid #c0c0c0;
+
+}
+
+#webshop_head h1 {
+    width: 80%;
+    display: inline-block;
+}
+
+#webshop_head input[type="search"]{
+    display: inline-block;
+    width: 19%;
+}
+
 #login {
     box-shadow: 0em 0em 1em #888888;
     margin: 0 auto;
@@ -750,7 +770,8 @@ a#float_right:hover {
 input[type="button"],
 input[type="submit"],
 input[type="number"],
-input[type="tel"]{
+input[type="tel"],
+input[type="search"]{
     //background-color: #1799b1;
 
     display: inline-block;
@@ -759,6 +780,11 @@ input[type="tel"]{
     padding: 8px 18px;
     text-decoration: none;
     font: inherit;
+    border: 1px solid #B0CFE0;
+}
+
+input[type="search"]{
+    padding: 3px 18px !important;
 }
 
 select {
@@ -904,4 +930,10 @@ input[type="submit"]:hover {
 #container_admin {
     width: 85%;
     margin: 0 auto;
+}
+
+/*------------------ Zoeken  ------------------*/
+
+.no_style {
+    display: inline;
 }

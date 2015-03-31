@@ -5,9 +5,14 @@
     <div id="wrapper">
         <div id="main">
             <div id="content">
-                <div id="login_head">
+                <div id="webshop_head">
                     <h1>Webshop</h1>
+                    <form method="GET" action="SearchController.php" class="no_style">
+                        <input type="search" name="search" placeholder="Zoeken">
+                    </form>
+
                 </div>
+                <div class="clearer"></div>
                 <div id="breadcrumbs">
                     <a href="../controller/HomeController.php">Home</a><span class="bread_pointer">></span>
                     <a href="../controller/WebshopController.php">Webshop</a>

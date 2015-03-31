@@ -23,9 +23,13 @@ function showShoppingcart($products)
                 </div><!-- breadcrumbs -->
                 <div class="cart_head">
                     <p>
-                        Beste klant, u heeft
+
                         <?php
-                        if (!empty($_SESSION['amount'])) {
+                        if (empty($_SESSION['amount'])){
+                            echo "Beste klant, u heeft geen producten in de winkelwagen";
+                        }
+                        else {
+                            echo "Beste klant, u heeft ";
                             if ($_SESSION['amount'] < 1) {
                                 echo ' 0 producten in de winkelwagen';
                             } else if ($_SESSION['amount'] == 1) {

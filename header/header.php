@@ -34,7 +34,6 @@ if (isset($_SESSION['amount'])) {
         <h1 id="logo">
             Webshop
         </h1>
-
         <nav>
             <?php
             $nav = Navigation::getNavigation();
